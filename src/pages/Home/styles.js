@@ -1,5 +1,5 @@
 import styled from 'styled-components';
-import { darken } from 'polished'
+import { darken } from 'polished';
 
 export const ProductList = styled.ul`
   display: grid;
@@ -7,14 +7,14 @@ export const ProductList = styled.ul`
   grid-gap: 20px;
   list-style: none;
 
-  li{
+  li {
     display: flex;
     flex-direction: column;
-    background: #FFF;
+    background: #fff;
     border-radius: 4px;
     padding: 20px;
 
-    img{
+    img {
       align-self: center;
       max-width: 250px;
     }
@@ -26,13 +26,13 @@ export const ProductList = styled.ul`
       margin-top: 5px;
     }
 
-    > span{
+    > span {
       font-size: 21px;
       font-weight: bold;
       margin: 5px 0px 20px;
     }
 
-    button{
+    button {
       background: #7159c1;
       color: #fff;
       border: 0;
@@ -44,27 +44,26 @@ export const ProductList = styled.ul`
       align-items: center;
       transition: background 0.2s;
 
-      &:hover{
-        background: ${darken(0.06, '#7159c1')}
+      &:hover {
+        background: ${darken(0.06, '#7159c1')};
       }
 
-      div{
+      div {
         display: flex;
         align-items: center;
         padding: 12px;
-        background: rgba(0,0,0, 0.1);
+        background: rgba(0, 0, 0, 0.1);
 
-        svg{
+        svg {
           margin-right: 5px;
         }
       }
 
-      span{
+      span {
         flex: 1;
         text-align: center;
         font-weight: bold;
       }
-
     }
   }
 `;
