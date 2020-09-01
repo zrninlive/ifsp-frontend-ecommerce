@@ -8,11 +8,11 @@ export const Container = styled.ul`
   grid-gap: 20px;
   list-style: none;
 
-  ${media.lessThan('medium')`
+  ${media.lessThan('650px')`
     grid-template-columns: repeat(1, 1fr);
   `}
 
-  ${media.between('medium', 'large')`
+  ${media.between('650px', 'large')`
     grid-template-columns: repeat(2, 1fr);
   `}
 
