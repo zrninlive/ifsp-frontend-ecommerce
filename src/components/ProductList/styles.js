@@ -1,11 +1,20 @@
 import styled from 'styled-components';
 import { darken } from 'polished';
+import media from 'styled-media-query';
 
 export const Container = styled.ul`
   display: grid;
   grid-template-columns: repeat(3, 1fr);
   grid-gap: 20px;
   list-style: none;
+
+  ${media.lessThan('medium')`
+    grid-template-columns: repeat(1, 1fr);
+  `}
+
+  ${media.between('medium', 'large')`
+    grid-template-columns: repeat(2, 1fr);
+  `}
 
   li {
     display: flex;

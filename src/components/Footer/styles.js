@@ -1,4 +1,5 @@
 import styled from 'styled-components';
+import media from 'styled-media-query';
 
 export const Container = styled.footer`
   display: flex;
@@ -19,8 +20,11 @@ export const Highlights = styled.ul`
   justify-content: space-between;
   align-items: center;
 
+  ${media.lessThan('medium')`
+    flex-direction: column;
+  `}
+
   width: 70%;
-  margin-top: 50px;
 
   list-style: none;
 
@@ -28,9 +32,16 @@ export const Highlights = styled.ul`
     display: flex;
     align-items: center;
 
+    ${media.lessThan('medium')`
+      & + li {
+        margin-top: 15px;
+      }
+    `}
+
     background: #ffffff0d;
     color: #fff;
     padding: 20px;
+    min-width: 250px;
     border-radius: 15px;
 
     svg {
