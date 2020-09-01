@@ -1,5 +1,5 @@
 import styled from 'styled-components';
-import { Link } from 'react-router-dom'
+import { Link } from 'react-router-dom';
 
 export const Container = styled.header`
   display: flex;
@@ -14,24 +14,22 @@ export const Cart = styled(Link)`
   text-decoration: none;
   transition: opacity 0.2;
 
-  &:hover{
+  &:hover {
     opacity: 0.7;
   }
 
-  div{
+  div {
     text-align: right;
     margin-right: 10px;
 
-    strong{
+    strong {
       display: block;
       color: #fff;
     }
 
-    span{
+    span {
       font-size: 12px;
       color: #999;
     }
-
   }
-
-`
+`;

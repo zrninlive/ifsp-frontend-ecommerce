@@ -6,7 +6,7 @@ import { Container } from './styles';
 export default function Menu() {
   return (
     <Container>
-      <Link to="/">Skate</Link>
+      <Link to="/products/skate">Skate</Link>
       <Link to="/">Casual</Link>
       <Link to="/">Running</Link>
       <Link to="/">Chuteiras</Link>
