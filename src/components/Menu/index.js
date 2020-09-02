@@ -1,16 +1,18 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 
-import { Container } from './styles';
+import { Container, Default, Mobile } from './styles';
 
 export default function Menu() {
   return (
     <Container>
-      <Link to="/products/skate">Skate</Link>
-      <Link to="/">Casual</Link>
-      <Link to="/">Running</Link>
-      <Link to="/">Chuteiras</Link>
-      <Link to="/">Chinelos</Link>
+      <Default>
+        <Link to="/products/skate">Skate</Link>
+        <Link to="/products/casual">Casual</Link>
+        <Link to="/products/running">Running</Link>
+        <Link to="/products/chuteiras">Chuteiras</Link>
+        <Link to="/products/chinelos">Chinelos</Link>
+      </Default>
     </Container>
   );
 }

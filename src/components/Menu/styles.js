@@ -1,6 +1,9 @@
 import styled from 'styled-components';
+import media from 'styled-media-query';
 
-export const Container = styled.header`
+export const Container = styled.header``;
+
+export const Default = styled.div`
   display: flex;
   justify-content: space-between;
   align-items: center;
@@ -21,4 +24,10 @@ export const Container = styled.header`
       opacity: 0.7;
     }
   }
+
+  ${media.lessThan('650px')`
+    display: none;
+  `}
 `;
+
+export const Mobile = styled.div``;

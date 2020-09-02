@@ -30,6 +30,7 @@
       "id": 1,
       "title": "Tênis de Caminhada Leve Confortável",
       "price": 179.9,
+      "quantity": 2,
       "image": "https://rocketseat-cdn.s3-sa-east-1.amazonaws.com/modulo-redux/tenis1.jpg",
       "highlight": false
     },
@@ -37,6 +38,7 @@
       "id": 2,
       "title": "Tênis VR Caminhada Confortável Detalhes Couro Masculino",
       "price": 139.9,
+      "quantity": 3,
       "image": "https://rocketseat-cdn.s3-sa-east-1.amazonaws.com/modulo-redux/tenis2.jpg",
       "highlight": false
     },
@@ -44,36 +46,57 @@
       "id": 3,
       "title": "Tênis Adidas Duramo Lite 2.0",
       "price": 219.9,
+      "quantity": 1,
       "image": "https://rocketseat-cdn.s3-sa-east-1.amazonaws.com/modulo-redux/tenis3.jpg",
       "highlight": false
     },
     {
-      "id": 5,
+      "id": 4,
       "title": "Tênis VR Caminhada Confortável Detalhes Couro Masculino",
       "price": 139.9,
+      "quantity": 4,
       "image": "https://rocketseat-cdn.s3-sa-east-1.amazonaws.com/modulo-redux/tenis2.jpg",
       "highlight": true
     },
     {
-      "id": 6,
+      "id": 5,
       "title": "Tênis Adidas Duramo Lite 2.0",
       "price": 219.9,
+      "quantity": 1,
       "image": "https://rocketseat-cdn.s3-sa-east-1.amazonaws.com/modulo-redux/tenis3.jpg",
       "highlight": true
     },
     {
-      "id": 4,
+      "id": 6,
       "title": "Tênis de Caminhada Leve Confortável",
       "price": 179.9,
+      "quantity": 5,
       "image": "https://rocketseat-cdn.s3-sa-east-1.amazonaws.com/modulo-redux/tenis1.jpg",
       "highlight": false
     },
     {
-      "id": 22,
+      "id": 7,
       "title": "Chuteira Society Nike Beco 2 TF - Preto e Branco",
       "price": 139.9,
+      "quantity": 2,
       "image": "https://static.netshoes.com.br/produtos/chuteira-society-nike-beco-2-tf/72/HZM-3221-172/HZM-3221-172_zoom1.jpg",
       "highlight": true
+    },
+    {
+      "id": 8,
+      "title": "Chinelo Dedo Reserva Liso Masculino - Branco e Preto",
+      "price": 139.9,
+      "quantity": 3,
+      "image": "https://static.netshoes.com.br/produtos/chinelo-dedo-reserva-liso-masculino/28/B67-3814-028/B67-3814-028_zoom2.jpg",
+      "highlight": false
+    },
+    {
+      "id": 9,
+      "title": "Chinelo Dedo Reserva Liso Masculino - Branco e Preto",
+      "price": 129.99,
+      "quantity": 3,
+      "image": "https://static.netshoes.com.br/produtos/chinelo-dedo-reserva-listras-masculino/26/B67-3792-026/B67-3792-026_zoom2.jpg",
+      "highlight": false
     }
   ]
 }

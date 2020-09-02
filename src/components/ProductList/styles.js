@@ -23,22 +23,29 @@ export const Container = styled.ul`
     border-radius: 4px;
     padding: 20px;
 
-    img {
-      align-self: center;
-      max-width: 250px;
-    }
+    a {
+      display: flex;
+      flex-direction: column;
+      text-decoration: none;
+      color: #7159c1;
 
-    > strong {
-      font-size: 16px;
-      line-height: 20px;
-      color: #333;
-      margin-top: 5px;
-    }
+      img {
+        align-self: center;
+        max-width: 250px;
+      }
 
-    > span {
-      font-size: 21px;
-      font-weight: bold;
-      margin: 5px 0px 20px;
+      > strong {
+        font-size: 16px;
+        line-height: 20px;
+        color: #333;
+        margin-top: 5px;
+      }
+
+      > span {
+        font-size: 21px;
+        font-weight: bold;
+        margin: 5px 0px 20px;
+      }
     }
 
     button {

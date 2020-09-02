@@ -5,7 +5,7 @@ import { useSelector } from 'react-redux';
 import { MdShoppingBasket, MdPerson } from 'react-icons/md';
 import logo from '../../assets/images/logo.svg';
 
-import { Container, Cart } from './styles';
+import { Container, Actions, Cart, Account } from './styles';
 
 export default function Header() {
   const cartSize = useSelector(state => state.cart.length);
@@ -16,20 +16,22 @@ export default function Header() {
         <img src={logo} alt="rocketshoes" />
       </Link>
 
-      <Cart to="/cart">
-        <div>
-          <strong>Minha conta</strong>
-        </div>
-        <MdPerson size={36} color="#FFF" />
-      </Cart>
+      <Actions>
+        <Account>
+          <div>
+            <strong>Minha conta</strong>
+          </div>
+          <MdPerson size={36} color="#FFF" />
+        </Account>
 
-      <Cart to="/cart">
-        <div>
-          <strong>Meu carrinho</strong>
-          <span>{cartSize} items</span>
-        </div>
-        <MdShoppingBasket size={36} color="#FFF" />
-      </Cart>
+        <Cart to="/cart">
+          <div>
+            <strong>Meu carrinho</strong>
+            <span>{cartSize} items</span>
+          </div>
+          <MdShoppingBasket size={36} color="#FFF" />
+        </Cart>
+      </Actions>
     </Container>
   );
 }

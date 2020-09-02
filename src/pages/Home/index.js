@@ -3,9 +3,9 @@ import React, { useState, useEffect } from 'react';
 import { formatPrice } from '../../util/format';
 import api from '../../services/api';
 
-import { ProductList } from '../../components';
+import { ProductList, Title, Separator } from '../../components';
 
-import { Title, Separator } from './styles';
+// import { Separator } from './styles';
 
 export default function Home() {
   const [products, setProducts] = useState([]);
@@ -19,7 +19,6 @@ export default function Home() {
         ...product,
         priceFormatted: formatPrice(product.price),
       }));
-      console.log(products);
 
       setHighlights(products.filter(product => !!product.highlight));
       setProducts(products.filter(product => !product.highlight));
@@ -35,6 +34,7 @@ export default function Home() {
       <Separator />
       <Title>Mais vendidos</Title>
       <ProductList products={products} />
+      <Separator />
     </>
   );
 }

@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from 'react';
+import { useParams } from 'react-router-dom';
 import { useDispatch, useSelector } from 'react-redux';
 
 import { MdAddShoppingCart } from 'react-icons/md';
@@ -7,9 +8,11 @@ import api from '../../services/api';
 
 import * as CartActions from '../../store/modules/cart/actions';
 
-import { ProductList, CategoryTitle } from './styles';
+import { Title, ProductList } from '../../components';
 
 export default function Category() {
+  const { category } = useParams();
+
   const [products, setProducts] = useState([]);
 
   const amount = useSelector(state =>
@@ -42,25 +45,8 @@ export default function Category() {
 
   return (
     <>
-      <CategoryTitle>Skate</CategoryTitle>
-      <ProductList>
-        {products.map(product => (
-          <li key={product.id}>
-            <img src={product.image} alt={product.title} />
-            <strong>{product.title}</strong>
-            <span>{product.priceFormatted}</span>
-
-            <button type="button" onClick={() => handleAddProduct(product.id)}>
-              <div>
-                <MdAddShoppingCart size={16} color="#FFF" />
-                {amount[product.id] || 0}
-              </div>
-
-              <span>Adicionar ao carrinho</span>
-            </button>
-          </li>
-        ))}
-      </ProductList>
+      <Title>{category}</Title>
+      <ProductList products={products} />
     </>
   );
 }

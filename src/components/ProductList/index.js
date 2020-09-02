@@ -1,4 +1,5 @@
 import React from 'react';
+import { Link } from 'react-router-dom';
 import { MdAddShoppingCart } from 'react-icons/md';
 import { useDispatch, useSelector } from 'react-redux';
 
@@ -24,9 +25,11 @@ export default function ProductList({ products }) {
     <Container>
       {products.map(product => (
         <li key={product.id}>
-          <img src={product.image} alt={product.title} />
-          <strong>{product.title}</strong>
-          <span>{product.priceFormatted}</span>
+          <Link to={`/product/${product.id}`}>
+            <img src={product.image} alt={product.title} />
+            <strong>{product.title}</strong>
+            <span>{product.priceFormatted}</span>
+          </Link>
 
           <button type="button" onClick={() => handleAddProduct(product.id)}>
             <div>
