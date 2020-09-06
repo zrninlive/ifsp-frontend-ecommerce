@@ -6,6 +6,8 @@ export const Container = styled.footer`
   flex-direction: column;
   align-items: center;
 
+  margin: 5vw 0;
+
   img {
     margin: 40px auto;
     height: 3vh;
