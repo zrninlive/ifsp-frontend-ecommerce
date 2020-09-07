@@ -1,6 +1,6 @@
 import styled from 'styled-components';
 
-export const DefaultSeparator = styled.div`
+export const Separator = styled.div`
   width: 90%;
   height: 2px;
 

@@ -1,12 +1,12 @@
 import styled from 'styled-components';
 import media from 'styled-media-query';
 
-export const DefaultTitle = styled.h1`
+export const Title = styled.h1`
   margin: 30px 10px;
 
   display: flex;
   align-items: center;
-  justify-content: space-between;
+  justify-content: center;
 
   font-size: 2.5rem;
   text-align: center;
@@ -14,7 +14,7 @@ export const DefaultTitle = styled.h1`
   color: #7159c1;
 
   position: relative;
-
+/*
   ${media.greaterThan('650px')`
 
     &:before {
@@ -29,5 +29,5 @@ export const DefaultTitle = styled.h1`
       width: 30%;
     }
 
-  `}
+  `} */
 `;

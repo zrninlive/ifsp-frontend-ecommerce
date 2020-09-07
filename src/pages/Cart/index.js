@@ -12,7 +12,7 @@ import { formatPrice } from '../../util/format';
 
 import { Container, ProductTable, Total, CartIsEmpty } from './styles';
 
-import { Button, Separator } from '../../components';
+import { Button, Separator, Title } from '../../components';
 
 import * as CartAction from '../../store/modules/cart/actions';
 
@@ -46,6 +46,7 @@ export default function Cart() {
 
   return (
     <>
+      <Title>Meu carrinho</Title>
       <Container>
         {cart.length ? (
           <>
@@ -116,10 +117,7 @@ export default function Cart() {
         ) : (
           <CartIsEmpty>
             <h1>Carrinho vazio</h1>
-            <p>
-              Adicione produtos clicando no botão “Comprar” na página de
-              produto.
-            </p>
+            <p>Você ainda não adicionou nenhum produto em seu carrinho.</p>
 
             <Button onClick={() => history.push('/')}>
               Voltar para a página inicial
