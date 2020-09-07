@@ -1,18 +1,35 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { Link } from 'react-router-dom';
 
 import { Container, Default, Mobile, Burguer, RightNav } from './styles';
 
 import logo from '../../assets/images/logo.svg';
 
+import api from '../../services/api';
+
+import { useProducts } from '../../hooks/products';
+
 const MenuLinks = () => {
+  const { storeProducts, setCategories } = useProducts();
+
+  useEffect(() => {
+    if (storeProducts.categories) {
+      return;
+    }
+
+    async function loadCategories() {
+      const response = await api.get('/categories');
+      setCategories(response.data);
+    }
+
+    loadCategories();
+  }, []);
+
   return (
     <>
-      <Link to="/products/skate">Skate</Link>
-      <Link to="/products/casual">Casual</Link>
-      <Link to="/products/running">Running</Link>
-      <Link to="/products/chuteiras">Chuteiras</Link>
-      <Link to="/products/chinelos">Chinelos</Link>
+      {storeProducts.categories.map(category => (
+        <Link to={`/products/category/${category.id}`}>{category.title}</Link>
+      ))}
     </>
   );
 };

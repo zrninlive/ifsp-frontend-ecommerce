@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useCallback } from 'react';
 import { useHistory } from 'react-router-dom';
 import { useDispatch, useSelector } from 'react-redux';
 
@@ -18,6 +18,8 @@ import * as CartAction from '../../store/modules/cart/actions';
 
 export default function Cart() {
   const history = useHistory();
+
+  const handleCheckout = useCallback(() => {}, []);
 
   const cart = useSelector(state =>
     state.cart.map(product => ({
@@ -112,7 +114,9 @@ export default function Cart() {
               </Total>
             </footer>
 
-            <Button type="button">Finalizar pedido</Button>
+            <Button type="button" onClick={() => handleCheckout}>
+              Finalizar pedido
+            </Button>
           </>
         ) : (
           <CartIsEmpty>

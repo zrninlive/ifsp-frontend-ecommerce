@@ -5,6 +5,7 @@ import { withPersist } from 'effector-persist';
 const store = withPersist(
   createStore({
     user: {},
+    redirectTo: null,
   })
 );
 

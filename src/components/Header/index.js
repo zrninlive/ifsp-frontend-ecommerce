@@ -7,8 +7,12 @@ import logo from '../../assets/images/logo.svg';
 
 import { Container, Actions, Cart, Account } from './styles';
 
+import { useAuth } from '../../hooks/auth';
+
 export default function Header() {
   const cartSize = useSelector(state => state.cart.length);
+
+  const { storeAuth } = useAuth();
 
   return (
     <Container>
@@ -17,12 +21,21 @@ export default function Header() {
       </Link>
 
       <Actions>
-        <Account to="/account">
-          <div>
-            <strong>Minha conta</strong>
-          </div>
-          <MdPerson size={36} color="#FFF" />
-        </Account>
+        {Object.keys(storeAuth.user).length ? (
+          <Account to="/account">
+            <div>
+              <strong>Minha conta</strong>
+            </div>
+            <MdPerson size={36} color="#FFF" />
+          </Account>
+        ) : (
+          <Account to="/login">
+            <div>
+              <strong>Entrar / Cadastrar</strong>
+            </div>
+            <MdPerson size={36} color="#FFF" />
+          </Account>
+        )}
 
         <Cart to="/cart">
           <div>

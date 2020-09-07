@@ -25,6 +25,28 @@
       "amount": 10
     }
   ],
+  "categories": [
+    {
+      "id": "1",
+      "title": "Skate"
+    },
+    {
+      "id": "2",
+      "title": "Casual"
+    },
+    {
+      "id": "3",
+      "title": "Running"
+    },
+    {
+      "id": "4",
+      "title": "Chuteiras"
+    },
+    {
+      "id": "5",
+      "title": "Chinelos"
+    }
+  ],
   "products": [
     {
       "id": 1,
@@ -32,7 +54,8 @@
       "price": 179.9,
       "quantity": 2,
       "image": "https://rocketseat-cdn.s3-sa-east-1.amazonaws.com/modulo-redux/tenis1.jpg",
-      "highlight": false
+      "highlight": false,
+      "category_id": 2
     },
     {
       "id": 2,
@@ -40,7 +63,8 @@
       "price": 139.9,
       "quantity": 3,
       "image": "https://rocketseat-cdn.s3-sa-east-1.amazonaws.com/modulo-redux/tenis2.jpg",
-      "highlight": false
+      "highlight": false,
+      "category_id": 2
     },
     {
       "id": 3,
@@ -48,7 +72,8 @@
       "price": 219.9,
       "quantity": 1,
       "image": "https://rocketseat-cdn.s3-sa-east-1.amazonaws.com/modulo-redux/tenis3.jpg",
-      "highlight": false
+      "highlight": false,
+      "category_id": 2
     },
     {
       "id": 4,
@@ -56,7 +81,8 @@
       "price": 139.9,
       "quantity": 4,
       "image": "https://rocketseat-cdn.s3-sa-east-1.amazonaws.com/modulo-redux/tenis2.jpg",
-      "highlight": true
+      "highlight": true,
+      "category_id": 3
     },
     {
       "id": 5,
@@ -64,7 +90,8 @@
       "price": 219.9,
       "quantity": 1,
       "image": "https://rocketseat-cdn.s3-sa-east-1.amazonaws.com/modulo-redux/tenis3.jpg",
-      "highlight": true
+      "highlight": true,
+      "category_id": 3
     },
     {
       "id": 6,
@@ -72,7 +99,8 @@
       "price": 179.9,
       "quantity": 5,
       "image": "https://rocketseat-cdn.s3-sa-east-1.amazonaws.com/modulo-redux/tenis1.jpg",
-      "highlight": false
+      "highlight": false,
+      "category_id": 3
     },
     {
       "id": 7,
@@ -80,7 +108,8 @@
       "price": 139.9,
       "quantity": 2,
       "image": "https://static.netshoes.com.br/produtos/chuteira-society-nike-beco-2-tf/72/HZM-3221-172/HZM-3221-172_zoom1.jpg",
-      "highlight": true
+      "highlight": true,
+      "category_id": 4
     },
     {
       "id": 8,
@@ -88,7 +117,8 @@
       "price": 139.9,
       "quantity": 3,
       "image": "https://static.netshoes.com.br/produtos/chinelo-dedo-reserva-liso-masculino/28/B67-3814-028/B67-3814-028_zoom2.jpg",
-      "highlight": false
+      "highlight": false,
+      "category_id": 5
     },
     {
       "id": 9,
@@ -96,7 +126,35 @@
       "price": 129.99,
       "quantity": 3,
       "image": "https://static.netshoes.com.br/produtos/chinelo-dedo-reserva-listras-masculino/26/B67-3792-026/B67-3792-026_zoom2.jpg",
-      "highlight": false
+      "highlight": false,
+      "category_id": 5
+    },
+    {
+      "id": 10,
+      "title": "Tênis Adidas Easy Vulc 20 Masculino - Preto e Cinza",
+      "price": 139.99,
+      "quantity": 2,
+      "image": "//static.netshoes.com.br/produtos/tenis-adidas-easy-vulc-20-masculino/72/NQQ-0133-172/NQQ-0133-172_zoom1.jpg",
+      "highlight": false,
+      "category_id": 1
+    },
+    {
+      "id": 11,
+      "title": "Tênis Adidas VS Pace Masculino - Marinho",
+      "price": 149.99,
+      "quantity": 2,
+      "image": "//static.netshoes.com.br/produtos/tenis-adidas-vs-pace-masculino/12/COL-3329-012/COL-3329-012_zoom1.jpg",
+      "highlight": false,
+      "category_id": 1
+    },
+    {
+      "id": 12,
+      "title": "Tênis Adidas VS Pace Masculino - Cinza e Laranja",
+      "price": 169.99,
+      "quantity": 2,
+      "image": "//static.netshoes.com.br/produtos/tenis-adidas-vs-pace-masculino/10/COL-3329-010/COL-3329-010_zoom1.jpg",
+      "highlight": false,
+      "category_id": 1
     }
   ]
 }

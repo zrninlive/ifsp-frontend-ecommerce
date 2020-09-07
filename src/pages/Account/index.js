@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import { useHistory } from 'react-router-dom';
 
 import 'react-accessible-accordion/dist/fancy-example.css';
@@ -15,8 +15,18 @@ import { Container, Orders, OrderIsEmpty } from './styles';
 
 import { Title, Separator, Input, Button } from '../../components';
 
+import { useAuth } from '../../hooks/auth';
+
 export default function Account() {
   const history = useHistory();
+
+  const { storeAuth } = useAuth();
+
+  useEffect(() => {
+    if (!Object.keys(storeAuth.user).length) {
+      return history.push('/login');
+    }
+  }, []);
 
   const orders = false;
 

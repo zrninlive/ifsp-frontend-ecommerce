@@ -18,8 +18,14 @@ export default function Account() {
     <>
       <Title>Login</Title>
       <Container>
-        <Input name="email" label="E-mail" size={45} />
-        <Input name="password" label="Senha" size={45} />
+        <Input name="email" required="required" label="E-mail" size={45} />
+        <Input
+          name="password"
+          required="required"
+          type="password"
+          label="Senha"
+          size={45}
+        />
 
         <Button>Entrar</Button>
       </Container>

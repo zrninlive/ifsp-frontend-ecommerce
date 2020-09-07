@@ -9,10 +9,15 @@ import * as CartActions from '../../store/modules/cart/actions';
 
 import { Title, ProductList, Separator } from '../../components';
 
-export default function Category() {
-  const { category } = useParams();
+import { useProducts } from '../../hooks/products';
 
+export default function Category() {
   const [products, setProducts] = useState([]);
+  const [category, setCategory] = useState([]);
+
+  const { category_id } = useParams();
+
+  const { storeProducts } = useProducts();
 
   const amount = useSelector(state =>
     state.cart.reduce((sumAmount, product) => {
@@ -25,7 +30,13 @@ export default function Category() {
 
   useEffect(() => {
     async function loadProducts() {
-      const response = await api.get('products');
+      const categorySelected = storeProducts.categories.find(
+        category => category.id === category_id
+      );
+
+      setCategory(categorySelected);
+
+      const response = await api.get(`products?category_id=${category_id}`);
 
       const data = response.data.map(product => ({
         ...product,
@@ -36,7 +47,7 @@ export default function Category() {
     }
 
     loadProducts();
-  }, []);
+  }, [category_id]);
 
   function handleAddProduct(id) {
     dispatch(CartActions.addToCartRequest(id));
@@ -44,7 +55,7 @@ export default function Category() {
 
   return (
     <>
-      <Title>{category}</Title>
+      <Title>{category.title}</Title>
       <ProductList products={products} />
       <Separator />
     </>
