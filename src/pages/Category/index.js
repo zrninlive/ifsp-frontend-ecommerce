@@ -2,13 +2,12 @@ import React, { useState, useEffect } from 'react';
 import { useParams } from 'react-router-dom';
 import { useDispatch, useSelector } from 'react-redux';
 
-import { MdAddShoppingCart } from 'react-icons/md';
 import { formatPrice } from '../../util/format';
 import api from '../../services/api';
 
 import * as CartActions from '../../store/modules/cart/actions';
 
-import { Title, ProductList } from '../../components';
+import { Title, ProductList, Separator } from '../../components';
 
 export default function Category() {
   const { category } = useParams();
@@ -47,6 +46,7 @@ export default function Category() {
     <>
       <Title>{category}</Title>
       <ProductList products={products} />
+      <Separator />
     </>
   );
 }
