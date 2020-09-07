@@ -31,7 +31,6 @@ export default function Home() {
     <>
       <Title>Lançamentos</Title>
       <ProductList products={highlights} />
-      <Separator />
       <Title>Mais vendidos</Title>
       <ProductList products={products} />
       <Separator />

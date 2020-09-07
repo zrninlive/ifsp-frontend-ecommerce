@@ -12,13 +12,6 @@ export const Container = styled.div`
 
   background: #fff;
   border-radius: 4px;
-
-  footer {
-    margin-top: 30px;
-    display: flex;
-    justify-content: flex-end;
-    align-items: center;
-  }
 `;
 
 export const ProductTable = styled.table`
@@ -28,11 +21,23 @@ export const ProductTable = styled.table`
     color: #999;
     text-align: left;
     padding: 12px;
+
+    ${media.lessThan('650px')`
+      &:first-child {
+        display: none;
+      }
+    `}
   }
 
   tbody td {
     padding: 12px;
     border-bottom: 1px solid #eee;
+
+    ${media.lessThan('650px')`
+      &:first-child {
+        display: none;
+      }
+    `}
   }
 
   img {
@@ -80,10 +85,15 @@ export const ProductTable = styled.table`
 `;
 
 export const Total = styled.div`
+  margin: 20px 0;
+
   display: flex;
   align-items: baseline;
+  justify-content: center;
 
   span {
+    text-transform: uppercase;
+    font-size: 1.25rem;
     color: #999;
     font-weight: bold;
   }
@@ -91,5 +101,25 @@ export const Total = styled.div`
   strong {
     font-size: 28px;
     margin-left: 5px;
+    color: #7159c1;
+  }
+`;
+
+export const CartIsEmpty = styled.div`
+  padding: 20px;
+
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+
+  text-align: center;
+
+  h1 {
+    margin-bottom: 30px;
+  }
+
+  button {
+    margin-top: 30px;
   }
 `;
