@@ -2,9 +2,14 @@ import styled from 'styled-components';
 import media from 'styled-media-query';
 
 export const Container = styled.button`
-  min-width: 300px;
+  ${media.greaterThan('650px')`
+      min-width: 250px;
+  `}
+
+  min-width: 250px;
 
   ${media.lessThan('650px')`
+      min-width: 250px;
       width: 100%;
   `}
 

@@ -19,7 +19,6 @@ function App() {
     <Provider store={store}>
       <Router history={history}>
         <Header />
-        <NavBar />
         <Menu />
         <Routes />
         <Footer />

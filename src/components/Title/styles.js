@@ -15,27 +15,19 @@ export const DefaultTitle = styled.h1`
 
   position: relative;
 
-  &:before {
-    content: '';
-    width: 100px;
-    border: 1px solid #7159c1;
-    width: 12%;
+  ${media.greaterThan('650px')`
 
-    ${media.greaterThan('650px')`
+    &:before {
+      content: '';
+      border: 1px solid #7159c1;
       width: 30%;
-      margin-left: 20px;
-    `}
-  }
+    }
 
-  &:after {
-    content: '';
-    width: 100px;
-    border: 1px solid #7159c1;
-    width: 12%;
-
-    ${media.greaterThan('650px')`
+    &:after {
+      content: '';
+      border: 1px solid #7159c1;
       width: 30%;
-      margin-left: 20px;
-    `}
-  }
+    }
+
+  `}
 `;

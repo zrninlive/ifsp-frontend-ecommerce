@@ -54,6 +54,8 @@ export default function Product() {
       <Title>Produtos Relacionados</Title>
 
       <ProductList products={products} />
+
+      <Separator />
     </>
   );
 }

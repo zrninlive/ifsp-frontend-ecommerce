@@ -1,7 +1,7 @@
 import styled from 'styled-components';
 
 export const Container = styled.form`
-  padding: 30px;
+  padding: 15px;
   /* background: #fff; */
   border-radius: 4px;
 
@@ -16,23 +16,25 @@ export const Container = styled.form`
 `;
 
 export const Orders = styled.div`
-  padding: 30px;
-  background: #fff;
+  padding: 15px;
+  /* background: #fff; */
   border-radius: 4px;
 
   .accordion__button {
     display: flex;
     justify-content: space-between;
+    font-weight: bold;
 
     color: #000;
 
     span {
-      font-weight: bold;
       color: #7159c1;
     }
   }
 
   .accordion__panel {
+    background: #fff;
+
     table {
       width: 100%;
       text-align: center;
@@ -41,5 +43,13 @@ export const Orders = styled.div`
         height: 50px;
       }
     }
+  }
+`;
+
+export const OrderIsEmpty = styled.div`
+  h1 {
+    text-align: center;
+    color: #fff;
+    margin-bottom: 30px;
   }
 `;

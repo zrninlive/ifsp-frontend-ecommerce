@@ -10,7 +10,12 @@ export const Container = styled.header`
 
   ${media.lessThan('650px')`
     flex-direction: column;
-    height: 15vh;
+    height: 10vh;
+
+    a > img {
+      display: none;
+    }
+
   `}
 `;
 

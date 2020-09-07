@@ -19,11 +19,19 @@ export const Picture = styled.div`
 
   img {
     height: 300px;
+
+    ${media.lessThan('650px')`
+      height: 270px;
+    `}
   }
 `;
 
 export const Info = styled.div`
   padding: 20px;
+
+  ${media.lessThan('650px')`
+    padding: 0;
+  `}
 
   display: flex;
   flex-direction: column;

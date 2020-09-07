@@ -5,5 +5,5 @@ export const DefaultSeparator = styled.div`
   height: 2px;
 
   margin: 70px auto;
-  border-top: 4px inset #7159c1;
+  border-top: 2px solid #7159c1;
 `;
