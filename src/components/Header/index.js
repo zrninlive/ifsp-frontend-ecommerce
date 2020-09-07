@@ -17,7 +17,7 @@ export default function Header() {
       </Link>
 
       <Actions>
-        <Account>
+        <Account to="/account">
           <div>
             <strong>Minha conta</strong>
           </div>
