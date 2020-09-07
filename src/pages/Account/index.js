@@ -1,103 +1,105 @@
 import React from 'react';
-import { useDispatch, useSelector } from 'react-redux';
+import 'react-accessible-accordion/dist/fancy-example.css';
 
 import {
-  MdRemoveCircleOutline,
-  MdAddCircleOutline,
-  MdDelete,
-} from 'react-icons/md';
+  Accordion,
+  AccordionItem,
+  AccordionItemHeading,
+  AccordionItemButton,
+  AccordionItemPanel,
+} from 'react-accessible-accordion';
 
-import { formatPrice } from '../../util/format';
+import { Container, Orders } from './styles';
 
-import { Container, ProductTable, Total } from './styles';
-
-import * as CartAction from '../../store/modules/cart/actions';
+import { Title, Separator, Input, Button } from '../../components';
 
 export default function Account() {
-  const cart = useSelector(state =>
-    state.cart.map(product => ({
-      ...product,
-      subTotal: formatPrice(product.price * product.amount),
-    }))
-  );
-
-  const total = useSelector(state =>
-    formatPrice(
-      state.cart.reduce((totalSum, product) => {
-        return totalSum + product.price * product.amount;
-      }, 0)
-    )
-  );
-
-  const dispatch = useDispatch();
-
-  function increment(product) {
-    dispatch(CartAction.updateAmountRequest(product.id, product.amount + 1));
-  }
-
-  function decrement(product) {
-    dispatch(CartAction.updateAmountRequest(product.id, product.amount - 1));
-  }
-
   return (
-    <Container>
-      <ProductTable>
-        <thead>
-          <tr>
-            <th />
-            <th>PRODUTO</th>
-            <th>QTD</th>
-            <th>SUBTOTAL</th>
-            <th />
-          </tr>
-        </thead>
-        <tbody>
-          {cart.map(product => (
-            <tr key={product.id}>
-              <td>
-                <img src={product.image} alt={product.title} />
-              </td>
-              <td>
-                <strong>{product.title}</strong>
-                <span>{product.priceFormatted}</span>
-              </td>
-              <td>
-                <div>
-                  <button type="button" onClick={() => decrement(product)}>
-                    <MdRemoveCircleOutline size={20} color="#7159c1" />
-                  </button>
-                  <input type="number" readOnly value={product.amount} />
-                  <button type="button" onClick={() => increment(product)}>
-                    <MdAddCircleOutline size={20} color="#7159c1" />
-                  </button>
-                </div>
-              </td>
-              <td>
-                <strong>{product.subTotal}</strong>
-              </td>
-              <td>
-                <button
-                  type="button"
-                  onClick={() =>
-                    dispatch(CartAction.removeFromCart(product.id))
-                  }
-                >
-                  <MdDelete size={20} color="#7159c1" />
-                </button>
-              </td>
-            </tr>
-          ))}
-        </tbody>
-      </ProductTable>
+    <>
+      <Title>Meus pedidos</Title>
 
-      <footer>
-        <button type="button">Finalizar pedido</button>
+      <Orders>
+        <Accordion allowMultipleExpanded={true}>
+          <AccordionItem>
+            <AccordionItemHeading>
+              <AccordionItemButton>
+                <p>Pedido #0001 - 01/09/2020 </p>
+                <span>R$999,00</span>
+              </AccordionItemButton>
+            </AccordionItemHeading>
+            <AccordionItemPanel>
+              <table>
+                <thead>
+                  <th width="50%">Produto</th>
+                  <th width="15%">Qtd</th>
+                  <th width="35%">Valor</th>
+                </thead>
+                <tbody>
+                  <tr>
+                    <td>Tenis Nike Air Max 90 - Preto Número 547 #102912</td>
+                    <td>1</td>
+                    <td>R$400,00</td>
+                  </tr>
+                </tbody>
+              </table>
+            </AccordionItemPanel>
+          </AccordionItem>
+          <AccordionItem>
+            <AccordionItemHeading>
+              <AccordionItemButton>
+                <p>Pedido #0001 - 02/09/2020 </p>
+                <span>R$300,00</span>
+              </AccordionItemButton>
+            </AccordionItemHeading>
+            <AccordionItemPanel>
+              <table>
+                <thead>
+                  <th width="50%">Produto</th>
+                  <th width="15%">Qtd</th>
+                  <th width="35%">Valor</th>
+                </thead>
+                <tbody>
+                  <tr>
+                    <td>Tenis Nike Air Max 90 - Preto Número 547 #102912</td>
+                    <td>1</td>
+                    <td>R$400,00</td>
+                  </tr>
+                </tbody>
+              </table>
+            </AccordionItemPanel>
+          </AccordionItem>
+        </Accordion>
+      </Orders>
 
-        <Total>
-          <span>Total</span>
-          <strong>{total}</strong>
-        </Total>
-      </footer>
-    </Container>
+      <Separator />
+
+      <Title>Meus dados</Title>
+
+      <Container>
+        <Input name="name" label="Nome" />
+
+        <Input name="cpf" label="CPF" size={48} />
+
+        <Input name="phone" label="Telefone" size={48} />
+
+        <Input name="zipcode" label="Cep" size={15} />
+
+        <Input name="address" label="Endereço" size={60} />
+
+        <Input name="number" label="Número" size={10} />
+
+        <Input name="number" label="Cidade" size={50} />
+
+        <Input name="number" label="Estado" size={45} />
+
+        <Button>Atualizar</Button>
+
+        <Button type="button" background="#d04f4f99">
+          Logout
+        </Button>
+
+        <Separator />
+      </Container>
+    </>
   );
 }

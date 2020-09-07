@@ -1,97 +1,45 @@
 import styled from 'styled-components';
-import { darken } from 'polished'
 
-export const Container = styled.div`
+export const Container = styled.form`
   padding: 30px;
-  background: #FFF;
+  /* background: #fff; */
   border-radius: 4px;
 
-  footer{
-    margin-top: 30px;
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
+  display: flex;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  align-items: baseline;
 
-    button{
-      background: #7159c1;
-      color: #fff;
-      border: 0;
-      border-radius: 4px;
-      padding: 12px 20px;
-      font-weight: bold;
-      text-transform: uppercase;
-      transition: background .2s;
-
-      &:hover{
-        background: ${darken(0.03, '#7159c1')}
-      }
-
-    }
+  button {
+    margin: 50px auto 0px;
   }
 `;
 
-export const ProductTable = styled.table`
-  width: 100%;
+export const Orders = styled.div`
+  padding: 30px;
+  background: #fff;
+  border-radius: 4px;
 
-  thead th{
-    color: #999;
-    text-align: left;
-    padding: 12px;
-  }
-
-  tbody td{
-    padding: 12px;
-    border-bottom: 1px solid #eee;
-  }
-
-  img{
-    height: 100px;
-  }
-
-  strong{
-    color: #333;
-    display: block;
-  }
-
-  span{
-    margin-top: 5px;
-    font-size: 18px;
-    font-weight: bold;
-    display: block;
-  }
-
-  div{
+  .accordion__button {
     display: flex;
-    align-items: center;
+    justify-content: space-between;
 
-    input{
-      border: 1px solid #ddd;
-      border-radius: 4px;
-      color: #666;
-      padding: 6px;
-      width: 50px;
-    }
+    color: #000;
 
-    button{
-      background: none;
-      border: none;
-      padding: 6px;
+    span {
+      font-weight: bold;
+      color: #7159c1;
     }
   }
-`
 
-export const Total = styled.div`
-  display: flex;
-  align-items: baseline;
+  .accordion__panel {
+    table {
+      width: 100%;
+      text-align: center;
 
-  span{
-    color: #999;
-    font-weight: bold;
+      tr {
+        height: 50px;
+      }
+    }
   }
-
-  strong{
-    font-size: 28px;
-    margin-left: 5px;
-  }
-
-`
+`;
