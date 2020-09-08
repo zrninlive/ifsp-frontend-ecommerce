@@ -10,11 +10,18 @@ const store = withPersist(
 );
 
 const setUser = createEvent();
+const setRedirect = createEvent();
+
 const clearStore = createEvent();
 
 store.on(setUser, (state, user) => ({
   ...state,
   user,
+}));
+
+store.on(setRedirect, (state, redirectTo) => ({
+  ...state,
+  redirectTo,
 }));
 
 store.reset(clearStore);
@@ -23,6 +30,7 @@ export function useAuth() {
   return {
     storeAuth: useStore(store),
     setUser,
+    setRedirect,
     clearStore,
   };
 }

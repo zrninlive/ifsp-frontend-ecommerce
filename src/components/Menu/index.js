@@ -13,7 +13,7 @@ const MenuLinks = () => {
   const { storeProducts, setCategories } = useProducts();
 
   useEffect(() => {
-    if (storeProducts.categories) {
+    if (storeProducts.categories.length) {
       return;
     }
 

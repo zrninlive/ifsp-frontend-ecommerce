@@ -1,6 +1,7 @@
 import React, { useCallback } from 'react';
 import { useHistory } from 'react-router-dom';
 import { useDispatch, useSelector } from 'react-redux';
+import { toast } from 'react-toastify';
 
 import {
   MdRemoveCircleOutline,
@@ -21,8 +22,22 @@ import { useAuth } from '../../hooks/auth';
 export default function Cart() {
   const history = useHistory();
 
-  const { storeAuth } = useAuth();
-  const handleCheckout = useCallback(() => {}, []);
+  const { storeAuth, setRedirect } = useAuth();
+
+  const handleCheckout = useCallback(() => {
+    const { user } = storeAuth;
+
+    if (!Object.keys(user).length) {
+      toast.error(
+        'Para finalizar o seu pedido é necessário você se realizar o login ou se cadastrar'
+      );
+      return history.push('/login');
+    }
+
+    setRedirect('/cart');
+
+    alert('COMPROU!');
+  }, [storeAuth]);
 
   const cart = useSelector(state =>
     state.cart.map(product => ({
@@ -117,7 +132,7 @@ export default function Cart() {
               </Total>
             </footer>
 
-            <Button type="button" onClick={() => handleCheckout}>
+            <Button type="button" onClick={handleCheckout}>
               Finalizar pedido
             </Button>
           </>
