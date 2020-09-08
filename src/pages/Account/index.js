@@ -26,7 +26,7 @@ export default function Account() {
     if (!Object.keys(storeAuth.user).length) {
       return history.push('/login');
     }
-  }, []);
+  }, [history, storeAuth.user]);
 
   const orders = false;
 

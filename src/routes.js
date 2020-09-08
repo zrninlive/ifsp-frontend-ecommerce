@@ -20,7 +20,7 @@ export default function Routes() {
         exact
         component={Category}
       />
-      <Route path="/product/:id" component={Product} />
+      <Route path="/product/:product_id" component={Product} />
       <Route path="/cart" component={Cart} />
       <Route path="/account" component={Account} />
     </Switch>

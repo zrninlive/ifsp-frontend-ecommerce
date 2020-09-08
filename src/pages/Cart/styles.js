@@ -1,8 +1,6 @@
 import styled from 'styled-components';
 import media from 'styled-media-query';
 
-import { darken } from 'polished';
-
 export const Container = styled.div`
   padding: 30px;
 

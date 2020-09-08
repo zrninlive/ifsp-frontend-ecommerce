@@ -1,58 +1,70 @@
 import React, { useState, useEffect } from 'react';
-
+import { useParams } from 'react-router-dom';
 import { formatPrice } from '../../util/format';
-import api from '../../services/api';
 
 import { Button, Separator, ProductList, Title } from '../../components';
 
 import { ProductDetail, Picture, Info } from './styles';
 
+import { useProducts } from '../../hooks/products';
+
 export default function Product() {
-  const [products, setProducts] = useState([]);
+  const [productsRelationed, setProductsRelationed] = useState([]);
+  const [product, setProduct] = useState([]);
+
+  const { storeProducts } = useProducts();
+
+  const { product_id } = useParams();
+  console.log('PARAM PRODUCT ID', product_id);
 
   useEffect(() => {
-    async function loadProducts() {
-      const response = await api.get('products');
+    async function getProduct() {
+      const { products } = storeProducts;
 
-      const productsRelationed = response.data.map(product => ({
-        ...product,
-        priceFormatted: formatPrice(product.price),
-      }));
+      const [productDetail] = products.filter(
+        product => product.id === +product_id
+      );
 
-      setProducts(productsRelationed.filter(product => !!product.highlight));
+      const productsAssociateds = products.filter(
+        product =>
+          product.category_id === productDetail.category_id &&
+          product.id !== productDetail.id
+      );
+
+      if (!productDetail) {
+      }
+
+      setProduct(productDetail);
+
+      setProductsRelationed(productsAssociateds);
     }
 
-    loadProducts();
-  }, []);
+    getProduct();
+  }, [product_id, storeProducts]);
 
   return (
     <>
       <ProductDetail>
         <Picture>
-          <img src="https://static.netshoes.com.br/produtos/chinelo-dedo-reserva-listras-masculino/26/B67-3792-026/B67-3792-026_zoom2.jpg" />
+          <img src={product.image} alt={product.title} />
         </Picture>
         <Info>
-          <h1>CAMISETA NEW ERA NEW ENGLAND PATRIOTS AZUL-M</h1>
+          <h1>{product.title}</h1>
 
-          <p>
-            Não para! Para os praticantes da corrida o Tênis Under Armour
-            Charged Carbon é a companhia perfeita para o treino diário. Ideal
-            para corridas na rua ou na esteira, esse tênis de corrida possui
-            tecnologia que oferece ótimo amortecimento com proteção ao impacto e
-            com resposta rápida. Fabricado em malha, o tênis running da Under
-            Armour possui solado em borracha, oferecendo maior segurança na
-            passada.
-          </p>
+          <p>{product.description}</p>
 
-          <span>R$ 189,99</span>
+          <span>{formatPrice(product.price)}</span>
 
-          <Button>Adicionar ao carrinho</Button>
+          <Button onClick={() => {}}>Adicionar ao carrinho</Button>
         </Info>
       </ProductDetail>
 
-      <Title>Produtos Relacionados</Title>
-
-      <ProductList products={products} />
+      {productsRelationed.length && (
+        <>
+          <Title>Produtos Relacionados</Title>
+          <ProductList products={productsRelationed} />
+        </>
+      )}
 
       <Separator />
     </>

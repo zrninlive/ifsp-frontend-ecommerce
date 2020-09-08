@@ -23,12 +23,14 @@ const MenuLinks = () => {
     }
 
     loadCategories();
-  }, []);
+  }, [setCategories, storeProducts.categories]);
 
   return (
     <>
       {storeProducts.categories.map(category => (
-        <Link to={`/products/category/${category.id}`}>{category.title}</Link>
+        <Link key={category.id} to={`/products/category/${category.id}`}>
+          {category.title}
+        </Link>
       ))}
     </>
   );

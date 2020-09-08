@@ -16,9 +16,12 @@ import { Button, Separator, Title } from '../../components';
 
 import * as CartAction from '../../store/modules/cart/actions';
 
+import { useAuth } from '../../hooks/auth';
+
 export default function Cart() {
   const history = useHistory();
 
+  const { storeAuth } = useAuth();
   const handleCheckout = useCallback(() => {}, []);
 
   const cart = useSelector(state =>

@@ -51,6 +51,7 @@
     {
       "id": 1,
       "title": "Tênis de Caminhada Leve Confortável",
+      "description": "Conte com a Adidas para turbinar seu streetwear! Com design moderno e autêntico, o Tênis Nike Air Max Excee é para o homem que busca conforto e estilo nas suas combinações casuais. Confeccionado em material leve e resistente, garantindo respirabilidade e durabilidade.",
       "price": 179.9,
       "quantity": 2,
       "image": "https://rocketseat-cdn.s3-sa-east-1.amazonaws.com/modulo-redux/tenis1.jpg",
@@ -60,6 +61,7 @@
     {
       "id": 2,
       "title": "Tênis VR Caminhada Confortável Detalhes Couro Masculino",
+      "description": "Conte com a Adidas para turbinar seu streetwear! Com design moderno e autêntico, o Tênis Nike Air Max Excee é para o homem que busca conforto e estilo nas suas combinações casuais. Confeccionado em material leve e resistente, garantindo respirabilidade e durabilidade.",
       "price": 139.9,
       "quantity": 3,
       "image": "https://rocketseat-cdn.s3-sa-east-1.amazonaws.com/modulo-redux/tenis2.jpg",
@@ -69,6 +71,7 @@
     {
       "id": 3,
       "title": "Tênis Adidas Duramo Lite 2.0",
+      "description": "Conte com a Adidas para turbinar seu streetwear! Com design moderno e autêntico, o Tênis Nike Air Max Excee é para o homem que busca conforto e estilo nas suas combinações casuais. Confeccionado em material leve e resistente, garantindo respirabilidade e durabilidade.",
       "price": 219.9,
       "quantity": 1,
       "image": "https://rocketseat-cdn.s3-sa-east-1.amazonaws.com/modulo-redux/tenis3.jpg",
@@ -78,6 +81,7 @@
     {
       "id": 4,
       "title": "Tênis VR Caminhada Confortável Detalhes Couro Masculino",
+      "description": "Conte com a Adidas para turbinar seu streetwear! Com design moderno e autêntico, o Tênis Nike Air Max Excee é para o homem que busca conforto e estilo nas suas combinações casuais. Confeccionado em material leve e resistente, garantindo respirabilidade e durabilidade.",
       "price": 139.9,
       "quantity": 4,
       "image": "https://rocketseat-cdn.s3-sa-east-1.amazonaws.com/modulo-redux/tenis2.jpg",
@@ -87,6 +91,7 @@
     {
       "id": 5,
       "title": "Tênis Adidas Duramo Lite 2.0",
+      "description": "Conte com a Adidas para turbinar seu streetwear! Com design moderno e autêntico, o Tênis Nike Air Max Excee é para o homem que busca conforto e estilo nas suas combinações casuais. Confeccionado em material leve e resistente, garantindo respirabilidade e durabilidade.",
       "price": 219.9,
       "quantity": 1,
       "image": "https://rocketseat-cdn.s3-sa-east-1.amazonaws.com/modulo-redux/tenis3.jpg",
@@ -96,6 +101,7 @@
     {
       "id": 6,
       "title": "Tênis de Caminhada Leve Confortável",
+      "description": "Conte com a Adidas para turbinar seu streetwear! Com design moderno e autêntico, o Tênis Nike Air Max Excee é para o homem que busca conforto e estilo nas suas combinações casuais. Confeccionado em material leve e resistente, garantindo respirabilidade e durabilidade.",
       "price": 179.9,
       "quantity": 5,
       "image": "https://rocketseat-cdn.s3-sa-east-1.amazonaws.com/modulo-redux/tenis1.jpg",
@@ -105,6 +111,7 @@
     {
       "id": 7,
       "title": "Chuteira Society Nike Beco 2 TF - Preto e Branco",
+      "description": "Conte com a Adidas para turbinar seu streetwear! Com design moderno e autêntico, o Tênis Nike Air Max Excee é para o homem que busca conforto e estilo nas suas combinações casuais. Confeccionado em material leve e resistente, garantindo respirabilidade e durabilidade.",
       "price": 139.9,
       "quantity": 2,
       "image": "https://static.netshoes.com.br/produtos/chuteira-society-nike-beco-2-tf/72/HZM-3221-172/HZM-3221-172_zoom1.jpg",
@@ -114,6 +121,7 @@
     {
       "id": 8,
       "title": "Chinelo Dedo Reserva Liso Masculino - Branco e Preto",
+      "description": "Conte com a Adidas para turbinar seu streetwear! Com design moderno e autêntico, o Tênis Nike Air Max Excee é para o homem que busca conforto e estilo nas suas combinações casuais. Confeccionado em material leve e resistente, garantindo respirabilidade e durabilidade.",
       "price": 139.9,
       "quantity": 3,
       "image": "https://static.netshoes.com.br/produtos/chinelo-dedo-reserva-liso-masculino/28/B67-3814-028/B67-3814-028_zoom2.jpg",
@@ -123,6 +131,7 @@
     {
       "id": 9,
       "title": "Chinelo Dedo Reserva Liso Masculino - Branco e Preto",
+      "description": "Conte com a Adidas para turbinar seu streetwear! Com design moderno e autêntico, o Tênis Nike Air Max Excee é para o homem que busca conforto e estilo nas suas combinações casuais. Confeccionado em material leve e resistente, garantindo respirabilidade e durabilidade.",
       "price": 129.99,
       "quantity": 3,
       "image": "https://static.netshoes.com.br/produtos/chinelo-dedo-reserva-listras-masculino/26/B67-3792-026/B67-3792-026_zoom2.jpg",
@@ -132,6 +141,7 @@
     {
       "id": 10,
       "title": "Tênis Adidas Easy Vulc 20 Masculino - Preto e Cinza",
+      "description": "Conte com a Adidas para turbinar seu streetwear! Com design moderno e autêntico, o Tênis Nike Air Max Excee é para o homem que busca conforto e estilo nas suas combinações casuais. Confeccionado em material leve e resistente, garantindo respirabilidade e durabilidade.",
       "price": 139.99,
       "quantity": 2,
       "image": "//static.netshoes.com.br/produtos/tenis-adidas-easy-vulc-20-masculino/72/NQQ-0133-172/NQQ-0133-172_zoom1.jpg",
@@ -141,6 +151,7 @@
     {
       "id": 11,
       "title": "Tênis Adidas VS Pace Masculino - Marinho",
+      "description": "Conte com a Adidas para turbinar seu streetwear! Com design moderno e autêntico, o Tênis Nike Air Max Excee é para o homem que busca conforto e estilo nas suas combinações casuais. Confeccionado em material leve e resistente, garantindo respirabilidade e durabilidade.",
       "price": 149.99,
       "quantity": 2,
       "image": "//static.netshoes.com.br/produtos/tenis-adidas-vs-pace-masculino/12/COL-3329-012/COL-3329-012_zoom1.jpg",
@@ -150,6 +161,7 @@
     {
       "id": 12,
       "title": "Tênis Adidas VS Pace Masculino - Cinza e Laranja",
+      "description": "Conte com a Adidas para turbinar seu streetwear! Com design moderno e autêntico, o Tênis Nike Air Max Excee é para o homem que busca conforto e estilo nas suas combinações casuais. Confeccionado em material leve e resistente, garantindo respirabilidade e durabilidade.",
       "price": 169.99,
       "quantity": 2,
       "image": "//static.netshoes.com.br/produtos/tenis-adidas-vs-pace-masculino/10/COL-3329-010/COL-3329-010_zoom1.jpg",
