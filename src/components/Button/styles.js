@@ -18,6 +18,8 @@ export const Container = styled.button`
 
   background: ${props => (props.background ? props.background : `#7159c1`)};
 
+  cursor: ${props => (props.disabled ? 'default' : 'pointer')};
+
   font-size: 1.25rem;
   font-weight: bold;
   color: #fff;

@@ -7,15 +7,15 @@ import { Button, Separator, ProductList, Title } from '../../components';
 import { ProductDetail, Picture, Info } from './styles';
 
 import { useProducts } from '../../hooks/products';
+import { useCallback } from 'react';
 
 export default function Product() {
+  const { product_id } = useParams();
+
   const [productsRelationed, setProductsRelationed] = useState([]);
   const [product, setProduct] = useState([]);
 
-  const { storeProducts } = useProducts();
-
-  const { product_id } = useParams();
-  console.log('PARAM PRODUCT ID', product_id);
+  const { storeProducts, addToCart } = useProducts();
 
   useEffect(() => {
     async function getProduct() {
@@ -42,6 +42,13 @@ export default function Product() {
     getProduct();
   }, [product_id, storeProducts]);
 
+  const handleAddCart = useCallback(
+    product => {
+      console.log(product);
+    },
+    [addToCart]
+  );
+
   return (
     <>
       <ProductDetail>
@@ -55,7 +62,21 @@ export default function Product() {
 
           <span>{formatPrice(product.price)}</span>
 
-          <Button onClick={() => {}}>Adicionar ao carrinho</Button>
+          {product.quantity ? (
+            <>
+              <Button onClick={() => handleAddCart(product)}>
+                Adicionar ao carrinho
+              </Button>
+
+              <small>
+                Restam <b>{product.quantity}</b> unidade em estoque
+              </small>
+            </>
+          ) : (
+            <Button disabled="disabled" background="#c1c1c1">
+              Produto Indisponível
+            </Button>
+          )}
         </Info>
       </ProductDetail>
 

@@ -81,5 +81,10 @@ export const Container = styled.ul`
         font-weight: bold;
       }
     }
+
+    h3 {
+      color: #c1c1c1;
+      text-align: center;
+    }
   }
 `;

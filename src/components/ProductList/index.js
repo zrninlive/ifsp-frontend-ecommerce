@@ -31,14 +31,18 @@ export default function ProductList({ products }) {
             <span>{product.priceFormatted}</span>
           </Link>
 
-          <button type="button" onClick={() => handleAddProduct(product.id)}>
-            <div>
-              <MdAddShoppingCart size={16} color="#FFF" />
-              {amount[product.id] || 0}
-            </div>
+          {product.quantity ? (
+            <button type="button" onClick={() => handleAddProduct(product.id)}>
+              <div>
+                <MdAddShoppingCart size={16} color="#FFF" />
+                {amount[product.id] || 0}
+              </div>
 
-            <span>Adicionar ao carrinho</span>
-          </button>
+              <span>Adicionar ao carrinho</span>
+            </button>
+          ) : (
+            <h3>Produto Indisponível</h3>
+          )}
         </li>
       ))}
     </Container>

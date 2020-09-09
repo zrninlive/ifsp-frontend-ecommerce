@@ -6,18 +6,29 @@ const store = withPersist(
   createStore({
     products: [],
     categories: [],
+    cart: [],
   })
 );
 
 const setProducts = createEvent();
 const setCategories = createEvent();
 
+const addToCart = createEvent();
+
 const clearStore = createEvent();
 
-store.on(setProducts, (state, products) => ({
-  ...state,
-  products,
-}));
+store.on(addToCart, (state, productAdded) => {
+  console.log(productAdded);
+});
+
+store.on(setProducts, (state, products) => {
+  console.log(state);
+
+  return {
+    ...state,
+    products,
+  };
+});
 
 store.on(setCategories, (state, categories) => ({
   ...state,
@@ -31,6 +42,7 @@ export function useProducts() {
     storeProducts: useStore(store),
     setProducts,
     setCategories,
+    addToCart,
     clearStore,
   };
 }
