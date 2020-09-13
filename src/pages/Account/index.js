@@ -33,15 +33,17 @@ export default function Account() {
   const [orders, setOrders] = useState([]);
   const history = useHistory();
 
-  const { storeAuth } = useAuth();
+  const { storeAuth, clearStore } = useAuth();
 
   useEffect(() => {
-    // if (!Object.keys(storeAuth.user).length) {
-    //   return history.push('/login');
-    // }
+    if (!Object.keys(storeAuth.user).length) {
+      return history.push('/login');
+    }
 
     async function loadOrders() {
-      const { data } = await api.get('/orders?customer.id=2');
+      const { data } = await api.get(
+        `/orders?customer.id=${storeAuth.user.id}`
+      );
 
       setOrders(data);
     }
@@ -116,7 +118,7 @@ export default function Account() {
 
         <Button>Atualizar</Button>
 
-        <Button type="button" background="#d04f4f99">
+        <Button onClick={clearStore} type="button" background="#d04f4f99">
           Logout
         </Button>
 

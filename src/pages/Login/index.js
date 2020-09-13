@@ -1,24 +1,67 @@
-import React from 'react';
+import React, { useEffect, useState, useCallback } from 'react';
+import { useHistory } from 'react-router-dom';
+import { toast } from 'react-toastify';
 
 import { Container, LoginContainer, CreateAccountContainer } from './styles';
 
+import api from '../../services/api';
+
 import { Title, Separator, Input, Button } from '../../components';
 
+import { useAuth } from '../../hooks/auth';
+
 export default function Account() {
+  const [email, setEmail] = useState('');
+  const [password, setPassword] = useState('');
+
+  const history = useHistory();
+
+  const { storeAuth, setUser } = useAuth();
+
+  const isAuth = Object.keys(storeAuth.user).length;
+
+  useEffect(() => {
+    if (isAuth) {
+      return history.push('/account');
+    }
+  }, [isAuth]);
+
+  const handleLogin = useCallback(
+    async e => {
+      e.preventDefault();
+
+      try {
+        console.log('email', email);
+        console.log('password', password);
+        const response = await api.get('/customers');
+        setUser(response.data);
+      } catch (error) {
+        toast.error('Usuário ou senha inválidos, tente novamente!');
+      }
+    },
+    [email, password]
+  );
+
   return (
     <>
       <Title>Login</Title>
       <Container>
         <LoginContainer>
-          <Input name="email" required="required" label="E-mail" />
+          <Input
+            name="email"
+            required="required"
+            label="E-mail"
+            onChange={e => setEmail(e.currentTarget.value)}
+          />
           <Input
             name="password"
             required="required"
             type="password"
             label="Senha"
+            onChange={e => setPassword(e.currentTarget.value)}
           />
 
-          <Button>Entrar</Button>
+          <Button onClick={handleLogin}>Entrar</Button>
         </LoginContainer>
 
         <CreateAccountContainer>
