@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react';
+import React, { useCallback, useEffect, useState } from 'react';
 import { useHistory } from 'react-router-dom';
 
 import 'react-accessible-accordion/dist/fancy-example.css';
@@ -30,15 +30,21 @@ Number.prototype.pad = function(size) {
 };
 
 export default function Account() {
-  const [orders, setOrders] = useState([]);
-  const history = useHistory();
-
   const { storeAuth, clearStore } = useAuth();
+
+  const [orders, setOrders] = useState([]);
+  const [customer, setCustomer] = useState({});
+  const [address, setAddress] = useState({});
+
+  const history = useHistory();
 
   useEffect(() => {
     if (!Object.keys(storeAuth.user).length) {
       return history.push('/login');
     }
+
+    setCustomer(storeAuth.user);
+    setAddress(storeAuth.user.address);
 
     async function loadOrders() {
       const { data } = await api.get(
@@ -49,7 +55,30 @@ export default function Account() {
     }
 
     loadOrders();
-  }, [history, storeAuth.user]);
+  }, [storeAuth.user]);
+
+  const handleOnChangeCustomer = useCallback(e => {
+    console.log(customer);
+    setCustomer({
+      ...customer,
+      [e.currentTarget.name]: e.currentTarget.value,
+    });
+  }, []);
+
+  const handleOnChangeAddress = useCallback(e => {
+    setCustomer({
+      ...address,
+      [e.currentTarget.name]: e.currentTarget.value,
+    });
+  }, []);
+
+  const handleSubmitCustomer = useCallback(
+    async e => {
+      e.preventDefault();
+      console.log(customer);
+    },
+    [customer]
+  );
 
   return (
     <>
@@ -58,7 +87,6 @@ export default function Account() {
       <Orders>
         {orders ? (
           <Accordion allowMultipleExpanded={true}>
-            {console.log(orders)}
             {orders.map(order => (
               <AccordionItem key={order.id}>
                 <AccordionItemHeading>
@@ -98,32 +126,76 @@ export default function Account() {
       </Orders>
 
       <Title>Meus dados</Title>
-
-      <Container>
-        <Input name="name" label="Nome" />
-
-        <Input name="cpf" label="CPF" size={48} />
-
-        <Input name="phone" label="Telefone" size={48} />
-
-        <Input name="zipcode" label="Cep" size={15} />
-
-        <Input name="address" label="Endereço" size={60} />
-
-        <Input name="number" label="Número" size={10} />
-
-        <Input name="number" label="Cidade" size={50} />
-
-        <Input name="number" label="Estado" size={45} />
-
-        <Button>Atualizar</Button>
-
-        <Button onClick={clearStore} type="button" background="#d04f4f99">
-          Logout
-        </Button>
-
-        <Separator />
-      </Container>
+      {customer && address && (
+        <Container>
+          <Input
+            name="id"
+            type="hidden"
+            value={customer.id}
+            onChange={handleOnChangeCustomer}
+          />
+          <Input
+            name="name"
+            label="Nome"
+            value={customer.name}
+            onChange={handleOnChangeCustomer}
+          />
+          <Input
+            name="cpf"
+            label="CPF"
+            size={48}
+            value={customer.cpf}
+            onChange={handleOnChangeCustomer}
+          />
+          <Input
+            name="phone"
+            label="Telefone"
+            size={48}
+            value={customer.phone}
+            onChange={handleOnChangeCustomer}
+          />
+          <Input
+            name="address.zipcode"
+            label="Cep"
+            size={15}
+            value={address.zipcode}
+            onChange={handleOnChangeAddress}
+          />
+          <Input
+            name="address.street"
+            label="Endereço"
+            size={60}
+            value={address.street}
+            onChange={handleOnChangeAddress}
+          />
+          <Input
+            name="address.number"
+            label="Número"
+            size={10}
+            value={address.number}
+            onChange={handleOnChangeAddress}
+          />
+          <Input
+            name="address.city"
+            label="Cidade"
+            size={50}
+            value={address.city}
+            onChange={handleOnChangeAddress}
+          />
+          <Input
+            name="address.state"
+            label="Estado"
+            size={45}
+            value={address.state}
+            onChange={handleOnChangeAddress}
+          />
+          <Button onClick={handleSubmitCustomer}>Atualizar</Button>
+          <Button onClick={clearStore} type="button" background="#d04f4f99">
+            Logout
+          </Button>
+          <Separator />
+        </Container>
+      )}
     </>
   );
 }

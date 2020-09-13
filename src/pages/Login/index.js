@@ -18,13 +18,11 @@ export default function Account() {
 
   const { storeAuth, setUser } = useAuth();
 
-  const isAuth = Object.keys(storeAuth.user).length;
-
   useEffect(() => {
-    if (isAuth) {
+    if (Object.keys(storeAuth.user).length) {
       return history.push('/account');
     }
-  }, [isAuth]);
+  }, [storeAuth]);
 
   const handleLogin = useCallback(
     async e => {
@@ -72,7 +70,7 @@ export default function Account() {
             <strong>ROCKETSHOES</strong>
           </p>
 
-          <Button>Criar conta</Button>
+          <Button onClick={() => history.push('/register')}>Criar conta</Button>
         </CreateAccountContainer>
       </Container>
 

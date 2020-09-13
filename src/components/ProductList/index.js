@@ -7,7 +7,7 @@ import * as CartActions from '../../store/modules/cart/actions';
 
 import { Container } from './styles';
 
-export default function ProductList({ products }) {
+export default function ProductList({ products, overflow = false }) {
   const amount = useSelector(state =>
     state.cart.reduce((sumAmount, product) => {
       sumAmount[product.id] = product.amount;
@@ -22,7 +22,7 @@ export default function ProductList({ products }) {
   const dispatch = useDispatch();
 
   return (
-    <Container>
+    <Container overflow={overflow}>
       {products.map(product => (
         <li key={product.id}>
           <Link to={`/product/${product.id}`}>

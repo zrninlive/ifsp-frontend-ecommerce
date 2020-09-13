@@ -8,12 +8,14 @@ import Product from './pages/Product';
 
 import Account from './pages/Account';
 import Login from './pages/Login';
+import Register from './pages/Register';
 
 export default function Routes() {
   return (
     <Switch>
       <Route path="/" exact component={Home} />
       <Route path="/login" exact component={Login} />
+      <Route path="/register" exact component={Register} />
 
       <Route
         path="/products/category/:category_id"

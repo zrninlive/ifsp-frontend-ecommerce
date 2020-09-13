@@ -83,7 +83,7 @@ export default function Product() {
       {productsRelationed.length && (
         <>
           <Title>Produtos Relacionados</Title>
-          <ProductList products={productsRelationed} />
+          <ProductList products={productsRelationed} overflow={true} />
         </>
       )}
 

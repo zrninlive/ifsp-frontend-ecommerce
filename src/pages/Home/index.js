@@ -51,7 +51,7 @@ export default function Home() {
   return (
     <>
       <Title>Lançamentos</Title>
-      <ProductList products={highlights} />
+      <ProductList products={highlights} overflow={true} />
       <Title>Super Outlet</Title>
       <ProductList products={productsOutlet} />
       <Separator />

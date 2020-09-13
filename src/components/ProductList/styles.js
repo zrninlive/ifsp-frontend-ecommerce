@@ -1,4 +1,4 @@
-import styled from 'styled-components';
+import styled, { css } from 'styled-components';
 import { darken } from 'polished';
 import media from 'styled-media-query';
 
@@ -10,6 +10,16 @@ export const Container = styled.ul`
 
   ${media.lessThan('650px')`
     grid-template-columns: repeat(1, 1fr);
+
+    ${props =>
+      props.overflow
+        ? css`
+            grid-template-columns: repeat(3, 1fr);
+            overflow-x: auto;
+          `
+        : ``};
+
+
   `}
 
   ${media.between('650px', 'large')`
