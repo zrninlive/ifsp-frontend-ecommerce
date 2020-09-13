@@ -25,6 +25,90 @@
       "amount": 10
     }
   ],
+  "orders": [
+    {
+      "id": 1,
+      "customer": {
+        "id": 2,
+        "name": "Christian Oliveira",
+        "cpf": "430.191.658-06",
+        "email": "christian.soliveira@outlook.com",
+        "password": "123",
+        "phone": "(15) 99680-3040",
+        "address": {
+          "zipcode": "18201450",
+          "street": "Wenceslau Braz",
+          "number": "790",
+          "city": "Itapetininga",
+          "state": "São Paulo"
+        }
+      },
+      "products": [
+        {
+          "id": "1",
+          "name": "Chuteira Nike",
+          "quantity": 1,
+          "value": 159.9,
+          "total": 159.9
+        }
+      ],
+      "total": 150.9,
+      "created_at": "2020-09-01T22:18:00"
+    },
+    {
+      "id": 2,
+      "customer": {
+        "id": 1,
+        "name": "Douglas",
+        "cpf": "1231231",
+        "address": {
+          "street": "blablabla",
+          "number": "420",
+          "city": "Itapetininga",
+          "state": "SP"
+        }
+      },
+      "products": [
+        {
+          "id": "1",
+          "name": "weed",
+          "quantity": 1,
+          "value": 10.0,
+          "total": 10.0
+        },
+        {
+          "id": "2",
+          "name": "hemp",
+          "quantity": 2,
+          "value": 10.0,
+          "total": 20.0
+        }
+      ],
+      "total": 40.0,
+      "created_at": "2020-08-27T22:18:00"
+    }
+  ],
+  "customers": {
+    "id": 2,
+    "name": "Christian Oliveira",
+    "cpf": "430.191.658-06",
+    "email": "christian.soliveira@outlook.com",
+    "password": "123",
+    "phone": "(15) 99680-3040",
+    "address": {
+      "zipcode": "18201450",
+      "street": "Wenceslau Braz",
+      "number": "790",
+      "city": "Itapetininga",
+      "state": "São Paulo"
+    }
+  },
+  "users": {
+    "id": 1,
+    "name": "Christian Oliveira",
+    "email": "christian.soliveira@outlook.com",
+    "password": "123"
+  },
   "categories": [
     {
       "id": "1",
