@@ -2,11 +2,13 @@ import { createStore, createEvent } from 'effector';
 import { useStore } from 'effector-react';
 import { withPersist } from 'effector-persist';
 
+import { useProducts } from './products';
+
+const { storeProducts } = useProducts();
+
 const store = withPersist(
   createStore({
-    user: {},
-    token: null,
-    plans: [],
+    products: [],
   })
 );
 

@@ -17,12 +17,15 @@ import { Button, Separator, Title } from '../../components';
 
 import * as CartAction from '../../store/modules/cart/actions';
 
-import { useAuth } from '../../hooks/auth';
+import { useAuth, useProducts } from '../../hooks';
 
 export default function Cart() {
   const history = useHistory();
 
   const { storeAuth, setRedirect } = useAuth();
+  const { storeProducts, removeFromCart, addToCart } = useProducts();
+
+  const { cart: productsOnCart } = storeProducts;
 
   const handleCheckout = useCallback(() => {
     const { user } = storeAuth;
@@ -39,29 +42,27 @@ export default function Cart() {
     alert('COMPROU!');
   }, [storeAuth]);
 
-  const cart = useSelector(state =>
-    state.cart.map(product => ({
-      ...product,
-      subTotal: formatPrice(product.price * product.amount),
-    }))
-  );
+  const cart = productsOnCart.map(product => ({
+    ...product,
+    subTotal: formatPrice(product.price * product.quantity),
+  }));
 
-  const total = useSelector(state =>
-    formatPrice(
-      state.cart.reduce((totalSum, product) => {
-        return totalSum + product.price * product.amount;
-      }, 0)
-    )
+  const total = formatPrice(
+    productsOnCart.reduce((totalSum, product) => {
+      return totalSum + product.price * product.quantity;
+    }, 0)
   );
 
   const dispatch = useDispatch();
 
   function increment(product) {
-    dispatch(CartAction.updateAmountRequest(product.id, product.amount + 1));
+    addToCart({ product_id: product.id, quantity: product.quantity });
+    // dispatch(CartAction.updateAmountRequest(product.id, product.amount + 1));
   }
 
   function decrement(product) {
-    dispatch(CartAction.updateAmountRequest(product.id, product.amount - 1));
+    addToCart({ product_id: product.id, quantity: product.quantity });
+    // dispatch(CartAction.updateAmountRequest(product.id, product.amount - 1));
   }
 
   return (
@@ -98,7 +99,11 @@ export default function Cart() {
                         >
                           <MdRemoveCircleOutline size={20} color="#7159c1" />
                         </button>
-                        <input type="number" readOnly value={product.amount} />
+                        <input
+                          type="number"
+                          readOnly
+                          value={product.quantity}
+                        />
                         <button
                           type="button"
                           onClick={() => increment(product)}
@@ -113,9 +118,7 @@ export default function Cart() {
                     <td>
                       <button
                         type="button"
-                        onClick={() =>
-                          dispatch(CartAction.removeFromCart(product.id))
-                        }
+                        onClick={() => removeFromCart(product.id)}
                       >
                         <MdDelete size={20} color="#7159c1" />
                       </button>

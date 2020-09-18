@@ -137,7 +137,7 @@ export default function Account() {
           <Input
             name="name"
             label="Nome"
-            value={customer.name}
+            value={customer.email}
             onChange={handleOnChangeCustomer}
           />
           <Input
@@ -145,6 +145,13 @@ export default function Account() {
             label="CPF"
             size={48}
             value={customer.cpf}
+            onChange={handleOnChangeCustomer}
+          />
+          <Input
+            name="email"
+            label="E-mail"
+            size={48}
+            value={customer.phone}
             onChange={handleOnChangeCustomer}
           />
           <Input
@@ -189,10 +196,13 @@ export default function Account() {
             value={address.state}
             onChange={handleOnChangeAddress}
           />
+
           <Button onClick={handleSubmitCustomer}>Atualizar</Button>
+
           <Button onClick={clearStore} type="button" background="#d04f4f99">
             Logout
           </Button>
+
           <Separator />
         </Container>
       )}

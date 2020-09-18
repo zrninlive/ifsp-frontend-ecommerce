@@ -8,9 +8,12 @@ import logo from '../../assets/images/logo.svg';
 import { Container, Actions, Cart, Account } from './styles';
 
 import { useAuth } from '../../hooks/auth';
+import { useProducts } from '../../hooks/products';
 
 export default function Header() {
-  const cartSize = useSelector(state => state.cart.length);
+  const { storeProducts } = useProducts();
+
+  const cartSize = storeProducts.cart.length;
 
   const { storeAuth } = useAuth();
 

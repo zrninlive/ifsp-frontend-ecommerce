@@ -5,18 +5,23 @@ import { useDispatch, useSelector } from 'react-redux';
 
 import * as CartActions from '../../store/modules/cart/actions';
 
+import { useProducts } from '../../hooks/products';
+
 import { Container } from './styles';
 
 export default function ProductList({ products, overflow = false }) {
-  const amount = useSelector(state =>
-    state.cart.reduce((sumAmount, product) => {
-      sumAmount[product.id] = product.amount;
-      return sumAmount;
-    }, {})
-  );
+  const { addToCart, storeProducts } = useProducts();
 
-  function handleAddProduct(id) {
-    dispatch(CartActions.addToCartRequest(id));
+  const { cart } = storeProducts;
+
+  const amount = cart.reduce((sumAmount, product) => {
+    sumAmount[product.id] = product.quantity;
+    return sumAmount;
+  }, {});
+
+  function handleAddProduct(id, quantity) {
+    addToCart({ product_id: id, quantity });
+    // dispatch(CartActions.addToCartRequest(id));
   }
 
   const dispatch = useDispatch();
@@ -30,9 +35,14 @@ export default function ProductList({ products, overflow = false }) {
             <strong>{product.title}</strong>
             <span>{product.priceFormatted}</span>
           </Link>
-
+          {}
           {product.quantity ? (
-            <button type="button" onClick={() => handleAddProduct(product.id)}>
+            <button
+              type="button"
+              onClick={() =>
+                handleAddProduct(product.id, amount[product.id] + 1 || 1)
+              }
+            >
               <div>
                 <MdAddShoppingCart size={16} color="#FFF" />
                 {amount[product.id] || 0}
