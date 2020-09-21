@@ -4,10 +4,53 @@
     <meta charset="utf-8" />
     <link rel="icon" href="%PUBLIC_URL%/favicon.ico" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <meta name="theme-color" content="#000000" />
+    <meta name="theme-color" content="#7159c1" />
+    <meta name="description" content="RocketShoes" />
+    <link rel="apple-touch-icon" href="./images/logo.png" />
+    <link rel="manifest" href="./manifest.json" />
+
+    <meta name="theme-color" content="#7159c1" />
     <title>RocketShoes</title>
   </head>
   <body>
     <div id="root"></div>
+    <script>
+      if ('serviceWorker' in navigator) {
+        window.addEventListener('load', () => {
+          navigator.serviceWorker
+            .register('./serviceworker.js')
+            .then(reg => console.log('Success: ', reg.scope))
+            .catch(err => console.log('Failure: ', err));
+        });
+
+        if (!('PushManager' in window)) {
+          throw new Error('No Push API Support!');
+        }
+
+        const requestNotificationPermission = async () => {
+          const permission = await Notification.requestPermission();
+
+          if (permission !== 'granted') {
+            throw new Error('Permission not granted for Notification');
+          }
+        };
+
+        function displayNotificatation() {
+          if (Notification.permission === 'granted') {
+            navigator.serviceWorker.getRegistration().then(reg =>
+              reg.showNotification('Clima Tempo', {
+                body:
+                  'Aproveite nossas promoções, todos os produtos com 50% OFF',
+                icon: './images/logo.png',
+                vibrate: [100, 50, 100],
+              })
+            );
+          }
+        }
+
+        requestNotificationPermission();
+        displayNotificatation();
+      }
+    </script>
   </body>
 </html>
