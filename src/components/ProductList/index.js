@@ -1,9 +1,6 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 import { MdAddShoppingCart } from 'react-icons/md';
-import { useDispatch, useSelector } from 'react-redux';
-
-import * as CartActions from '../../store/modules/cart/actions';
 
 import { useProducts } from '../../hooks/products';
 
@@ -21,10 +18,7 @@ export default function ProductList({ products, overflow = false }) {
 
   function handleAddProduct(id, quantity) {
     addToCart({ product_id: id, quantity });
-    // dispatch(CartActions.addToCartRequest(id));
   }
-
-  const dispatch = useDispatch();
 
   return (
     <Container overflow={overflow}>

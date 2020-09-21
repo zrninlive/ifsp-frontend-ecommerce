@@ -34,7 +34,6 @@ export default function Account() {
 
   const [orders, setOrders] = useState([]);
   const [customer, setCustomer] = useState({});
-  const [address, setAddress] = useState({});
 
   const history = useHistory();
 
@@ -44,12 +43,9 @@ export default function Account() {
     }
 
     setCustomer(storeAuth.user);
-    setAddress(storeAuth.user.address);
 
     async function loadOrders() {
-      const { data } = await api.get(
-        `/orders?customer.id=${storeAuth.user.id}`
-      );
+      const { data } = await api.get(`/orders?cpf=${storeAuth.user.cpf}`);
 
       setOrders(data);
     }
@@ -57,20 +53,15 @@ export default function Account() {
     loadOrders();
   }, [storeAuth.user]);
 
-  const handleOnChangeCustomer = useCallback(e => {
-    console.log(customer);
-    setCustomer({
-      ...customer,
-      [e.currentTarget.name]: e.currentTarget.value,
-    });
-  }, []);
-
-  const handleOnChangeAddress = useCallback(e => {
-    setCustomer({
-      ...address,
-      [e.currentTarget.name]: e.currentTarget.value,
-    });
-  }, []);
+  const handleOnChangeCustomer = useCallback(
+    e => {
+      setCustomer({
+        ...customer,
+        [e.currentTarget.name]: e.currentTarget.value,
+      });
+    },
+    [customer]
+  );
 
   const handleSubmitCustomer = useCallback(
     async e => {
@@ -126,7 +117,7 @@ export default function Account() {
       </Orders>
 
       <Title>Meus dados</Title>
-      {customer && address && (
+      {customer && (
         <Container>
           <Input
             name="id"
@@ -137,64 +128,64 @@ export default function Account() {
           <Input
             name="name"
             label="Nome"
-            value={customer.email}
+            value={customer.name}
             onChange={handleOnChangeCustomer}
           />
           <Input
             name="cpf"
             label="CPF"
-            size={48}
+            size={30}
             value={customer.cpf}
             onChange={handleOnChangeCustomer}
           />
           <Input
             name="email"
             label="E-mail"
-            size={48}
-            value={customer.phone}
+            size={30}
+            value={customer.email}
             onChange={handleOnChangeCustomer}
           />
           <Input
             name="phone"
             label="Telefone"
-            size={48}
+            size={30}
             value={customer.phone}
             onChange={handleOnChangeCustomer}
           />
           <Input
-            name="address.zipcode"
+            name="zipcode"
             label="Cep"
             size={15}
-            value={address.zipcode}
-            onChange={handleOnChangeAddress}
+            value={customer.zipcode}
+            onChange={handleOnChangeCustomer}
           />
           <Input
-            name="address.street"
+            name="street"
             label="Endereço"
             size={60}
-            value={address.street}
-            onChange={handleOnChangeAddress}
+            value={customer.street}
+            onChange={handleOnChangeCustomer}
           />
           <Input
-            name="address.number"
+            name="number"
             label="Número"
             size={10}
-            value={address.number}
-            onChange={handleOnChangeAddress}
+            value={customer.number}
+            onChange={handleOnChangeCustomer}
           />
           <Input
-            name="address.city"
+            name="city"
             label="Cidade"
             size={50}
-            value={address.city}
-            onChange={handleOnChangeAddress}
+            value={customer.city}
+            onChange={handleOnChangeCustomer}
           />
           <Input
-            name="address.state"
+            name="state"
             label="Estado"
             size={45}
-            value={address.state}
-            onChange={handleOnChangeAddress}
+            value={customer.state}
+            onChange={handleOnChangeCustomer}
           />
 
           <Button onClick={handleSubmitCustomer}>Atualizar</Button>

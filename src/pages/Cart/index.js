@@ -1,6 +1,5 @@
 import React, { useCallback } from 'react';
 import { useHistory } from 'react-router-dom';
-import { useDispatch, useSelector } from 'react-redux';
 import { toast } from 'react-toastify';
 
 import {
@@ -13,9 +12,7 @@ import { formatPrice } from '../../util/format';
 
 import { Container, ProductTable, Total, CartIsEmpty } from './styles';
 
-import { Button, Separator, Title } from '../../components';
-
-import * as CartAction from '../../store/modules/cart/actions';
+import { Button, Separator, Title, ProductList } from '../../components';
 
 import { useAuth, useProducts } from '../../hooks';
 
@@ -34,12 +31,20 @@ export default function Cart() {
       toast.error(
         'Para finalizar o seu pedido é necessário você se realizar o login ou se cadastrar'
       );
+
+      setRedirect('/cart');
       return history.push('/login');
     }
 
-    setRedirect('/cart');
+    const productsOrder = productsOnCart.map(product => ({
+      id: product.id,
+      quantity: product.quantity,
+    }));
 
-    alert('COMPROU!');
+    const payload = {
+      customer: user,
+      products: productsOrder,
+    };
   }, [storeAuth]);
 
   const cart = productsOnCart.map(product => ({
@@ -53,16 +58,12 @@ export default function Cart() {
     }, 0)
   );
 
-  const dispatch = useDispatch();
-
   function increment(product) {
-    addToCart({ product_id: product.id, quantity: product.quantity });
-    // dispatch(CartAction.updateAmountRequest(product.id, product.amount + 1));
+    addToCart({ product_id: product.id, quantity: product.quantity + 1 });
   }
 
   function decrement(product) {
-    addToCart({ product_id: product.id, quantity: product.quantity });
-    // dispatch(CartAction.updateAmountRequest(product.id, product.amount - 1));
+    addToCart({ product_id: product.id, quantity: product.quantity - 1 });
   }
 
   return (

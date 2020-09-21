@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import { useParams } from 'react-router-dom';
+import { useParams, useHistory } from 'react-router-dom';
 import { formatPrice } from '../../util/format';
 
 import { Button, Separator, ProductList, Title } from '../../components';
@@ -11,6 +11,7 @@ import { useCallback } from 'react';
 
 export default function Product() {
   const { product_id } = useParams();
+  const history = useHistory();
 
   const [productsRelationed, setProductsRelationed] = useState([]);
   const [product, setProduct] = useState([]);
@@ -44,8 +45,10 @@ export default function Product() {
 
   const handleAddCart = useCallback(
     product => {
-      console.log(product);
+      addToCart({ product_id: product.id, quantity: 1 });
+      return history.push('/cart');
     },
+
     [addToCart]
   );
 

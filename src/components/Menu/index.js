@@ -27,11 +27,12 @@ const MenuLinks = () => {
 
   return (
     <>
-      {storeProducts.categories.map(category => (
-        <Link key={category.id} to={`/products/category/${category.id}`}>
-          {category.title}
-        </Link>
-      ))}
+      {storeProducts &&
+        storeProducts.categories.map(category => (
+          <Link key={category.id} to={`/products/category/${category.id}`}>
+            {category.name}
+          </Link>
+        ))}
     </>
   );
 };

@@ -30,7 +30,7 @@ export default function Home() {
   useEffect(() => {
     async function loadProducts() {
       const response = await api.get('products');
-
+      console.log(response);
       const products = response.data.map(product => ({
         ...product,
         priceFormatted: formatPrice(product.price),

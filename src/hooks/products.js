@@ -35,42 +35,41 @@ store.on(setCategories, (state, categories) => ({
 }));
 
 store.on(addToCart, (state, { product_id, quantity }) => {
+  if (quantity < 1) return { ...state };
+
   const { products, cart } = state;
 
-  const productAdded = products.find(product => product.id === product_id);
+  const { quantity: stockQuantity } = products.find(
+    product => product.id === product_id
+  );
 
-  if (productAdded.quantity < quantity) {
+  if (stockQuantity < quantity) {
     toast.error('Quantidade solicitada fora de estoque');
     return { ...state };
   }
 
-  productAdded.quantity = quantity;
+  let cartUpdated;
 
-  let cartUpdated = cart.filter(product => product.id !== product_id);
+  const productAlreadyOnCart = cart.find(product => product.id === product_id);
 
-  return {
-    ...state,
-    cart: [...cartUpdated, productAdded],
-  };
-});
+  if (productAlreadyOnCart) {
+    cartUpdated = cart.map(product => {
+      if (product.id !== product_id) return { ...product };
 
-store.on(addToCart, (state, { product_id, quantity }) => {
-  const { products, cart } = state;
+      return { ...product, quantity };
+    });
+  } else {
+    const [productAdded] = products
+      .filter(product => product.id === product_id)
+      .map(product => ({ ...product, quantity }));
 
-  const productAdded = products.find(product => product.id === product_id);
-
-  if (productAdded.quantity < quantity) {
-    toast.error('Quantidade solicitada fora de estoque');
-    return { ...state };
+    cartUpdated = cart.filter(product => product.id !== product_id);
+    cartUpdated = [productAdded, ...cartUpdated];
   }
 
-  productAdded.quantity = quantity;
-
-  let cartUpdated = cart.filter(product => product.id !== product_id);
-
   return {
     ...state,
-    cart: [...cartUpdated, productAdded],
+    cart: cartUpdated,
   };
 });
 

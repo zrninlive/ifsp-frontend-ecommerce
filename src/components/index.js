@@ -4,6 +4,6 @@ export { default as Menu } from './Menu';
 export { default as ProductList } from './ProductList';
 export { default as Title } from './Title';
 export { default as Input } from './Input';
-
+export { default as Loader } from './Loader';
 export { default as Separator } from './Separator';
 export { default as Footer } from './Footer';

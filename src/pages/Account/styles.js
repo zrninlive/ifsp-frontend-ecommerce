@@ -25,10 +25,16 @@ export const Orders = styled.div`
     justify-content: space-between;
     font-weight: bold;
 
-    color: #000;
+    background: #7159c1;
+    color: #fff;
+
+    &:hover {
+      background: #7159c1;
+      opacity: 0.8;
+    }
 
     span {
-      color: #7159c1;
+      color: #00ff5a;
     }
   }
 

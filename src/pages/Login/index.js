@@ -16,10 +16,17 @@ export default function Account() {
 
   const history = useHistory();
 
-  const { storeAuth, setUser } = useAuth();
+  const { storeAuth, setUser, setRedirect } = useAuth();
 
   useEffect(() => {
     if (Object.keys(storeAuth.user).length) {
+      console.log(storeAuth);
+      alert('HEYY');
+      if (storeAuth.redirectTo) {
+        setRedirect(null);
+        return history.push(storeAuth.redirectTo);
+      }
+
       return history.push('/account');
     }
   }, [storeAuth]);
@@ -29,9 +36,12 @@ export default function Account() {
       e.preventDefault();
 
       try {
-        console.log('email', email);
-        console.log('password', password);
-        const response = await api.get('/customers');
+        const response = await api.get('/customers/login', {
+          params: {
+            email,
+            password,
+          },
+        });
         setUser(response.data);
       } catch (error) {
         toast.error('Usuário ou senha inválidos, tente novamente!');
