@@ -1,5 +1,6 @@
 import React, { useCallback, useEffect, useState } from 'react';
 import { useHistory } from 'react-router-dom';
+import { toast } from 'react-toastify';
 
 import 'react-accessible-accordion/dist/fancy-example.css';
 
@@ -21,7 +22,7 @@ import { useAuth } from '../../hooks/auth';
 
 import { formatPrice, formatDate } from '../../util/format';
 
-Number.prototype.pad = function (size) {
+Number.prototype.pad = function(size) {
   var s = String(this);
   while (s.length < (size || 2)) {
     s = '0' + s;
@@ -30,7 +31,7 @@ Number.prototype.pad = function (size) {
 };
 
 export default function Account() {
-  const { storeAuth, clearStore } = useAuth();
+  const { storeAuth, clearStore, setUser } = useAuth();
 
   const [orders, setOrders] = useState([]);
   const [customer, setCustomer] = useState({});
@@ -66,6 +67,21 @@ export default function Account() {
   const handleSubmitCustomer = useCallback(
     async e => {
       e.preventDefault();
+
+      try {
+        await api.get('/customers/update', {
+          params: {
+            ...customer,
+          },
+        });
+
+        setUser(customer);
+
+        toast.success('Cadastro atualizado com sucesso');
+      } catch (error) {
+        toast.error('Falha ao se cadastrar, tente novamente.');
+      }
+
       console.log(customer);
     },
     [customer]
@@ -76,15 +92,13 @@ export default function Account() {
       <Title>Meus pedidos</Title>
 
       <Orders>
-        {orders ? (
+        {Object.keys(orders).length ? (
           <Accordion allowMultipleExpanded={true}>
             {orders.map(order => (
               <AccordionItem key={order.created_at}>
                 <AccordionItemHeading>
                   <AccordionItemButton>
-                    <p>
-                      Pedido # {formatDate(order.created_at)}{' '}
-                    </p>
+                    <p>Pedido # {formatDate(order.created_at)} </p>
                     <span>{formatPrice(order.total)}</span>
                   </AccordionItemButton>
                 </AccordionItemHeading>
@@ -110,10 +124,10 @@ export default function Account() {
             ))}
           </Accordion>
         ) : (
-            <OrderIsEmpty>
-              <h1>Você ainda não possui nenhum pedido</h1>
-            </OrderIsEmpty>
-          )}
+          <OrderIsEmpty>
+            <h1>Você ainda não possui nenhum pedido</h1>
+          </OrderIsEmpty>
+        )}
       </Orders>
 
       <Title>Meus dados</Title>

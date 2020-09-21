@@ -22,7 +22,12 @@ export default function Cart() {
   const history = useHistory();
 
   const { storeAuth, setRedirect } = useAuth();
-  const { storeProducts, removeFromCart, addToCart } = useProducts();
+  const {
+    storeProducts,
+    removeFromCart,
+    addToCart,
+    clearStore,
+  } = useProducts();
 
   const { cart: productsOnCart } = storeProducts;
 
@@ -31,7 +36,7 @@ export default function Cart() {
 
     if (!Object.keys(user).length) {
       toast.error(
-        'Para finalizar o seu pedido é necessário você se realizar o login ou se cadastrar'
+        'Para finalizar o seu pedido é necessário você realizar seu login ou se cadastrar'
       );
 
       setRedirect('/cart');
@@ -50,22 +55,30 @@ export default function Cart() {
       productsArray[`products-${key}-quantity`] = value.quantity;
     });
 
-    console.log(productsArray);
-
     const payload = {
       customer_cpf: user.cpf,
       total_products: productsOrder.length,
       ...productsArray,
     };
 
-    await api.get('/orders/insert', {
-      params: {
-        ...payload,
-      },
-      headers: {
-        'content-type': 'application/x-www-form-urlencoded; charset=utf-8',
-      },
-    });
+    try {
+      await api.get('/orders/insert', {
+        params: {
+          ...payload,
+        },
+        headers: {
+          'content-type': 'application/x-www-form-urlencoded; charset=utf-8',
+        },
+      });
+
+      toast.info('Pedido efetuado com sucesso!');
+
+      clearStore();
+
+      return history.push('/account');
+    } catch (error) {
+      toast.error('Falha ao processar pedido, tente novamente!');
+    }
   }, [storeAuth]);
 
   const cart = productsOnCart.map(product => ({
@@ -162,15 +175,15 @@ export default function Cart() {
             </Button>
           </>
         ) : (
-            <CartIsEmpty>
-              <h1>Carrinho vazio</h1>
-              <p>Você ainda não adicionou nenhum produto em seu carrinho.</p>
+          <CartIsEmpty>
+            <h1>Carrinho vazio</h1>
+            <p>Você ainda não adicionou nenhum produto em seu carrinho.</p>
 
-              <Button onClick={() => history.push('/')}>
-                Voltar para a página inicial
+            <Button onClick={() => history.push('/')}>
+              Voltar para a página inicial
             </Button>
-            </CartIsEmpty>
-          )}
+          </CartIsEmpty>
+        )}
       </Container>
 
       <Separator />

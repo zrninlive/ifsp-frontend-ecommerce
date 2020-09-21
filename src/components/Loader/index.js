@@ -1,6 +1,17 @@
 import React from 'react';
-import { LoopCircleLoading } from 'react-loadingg';
+import { PacmanLoader } from 'react-spinners';
 
-const Loader = () => <LoopCircleLoading color="#7159c1" />;
+import { Container } from './styles';
 
-export default Loader;
+import { useLayout } from '../../hooks';
+export default function Loader() {
+  const { setLoading, storeLayout } = useLayout();
+
+  return (
+    <Container loading={storeLayout.loading}>
+      <div>
+        <PacmanLoader size={50} color={'#7159c1'} loading={false} />
+      </div>
+    </Container>
+  );
+}

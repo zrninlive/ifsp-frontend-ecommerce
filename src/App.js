@@ -18,7 +18,7 @@ function App() {
       <Footer />
       <GlobalStyle />
       <ToastContainer autoClose={5000} />
-      {/* <Loader /> */}
+      <Loader />
     </Router>
   );
 }

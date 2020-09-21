@@ -1,7 +1,21 @@
-import styled from 'styled-components';
+import styled, { keyframes } from 'styled-components';
 import media from 'styled-media-query';
 
+const transitionIn = keyframes`
+  from {
+    transform: translateX(-300px);
+    opacity: 0;
+  }
+
+  to {
+    opacity: 1;
+    transform: translateX(0px);
+  }
+`;
+
 export const ProductDetail = styled.div`
+  animation: ${transitionIn} 1s;
+
   display: flex;
   justify-content: center;
 

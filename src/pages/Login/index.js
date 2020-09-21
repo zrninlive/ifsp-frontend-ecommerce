@@ -55,6 +55,7 @@ export default function Account() {
         <LoginContainer>
           <Input
             name="email"
+            type="email"
             required="required"
             label="E-mail"
             onChange={e => setEmail(e.currentTarget.value)}

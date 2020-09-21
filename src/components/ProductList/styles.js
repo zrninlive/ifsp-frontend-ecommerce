@@ -1,8 +1,22 @@
-import styled, { css } from 'styled-components';
+import styled, { css, keyframes } from 'styled-components';
 import { darken } from 'polished';
 import media from 'styled-media-query';
 
+const transitionIn = keyframes`
+  from {
+    transform: translateY(-50px);
+    opacity: 0;
+  }
+
+  to {
+    opacity: 1;
+    transform: translateY(0px);
+  }
+`;
+
 export const Container = styled.ul`
+  animation: ${transitionIn} 3s;
+
   display: grid;
   grid-template-columns: repeat(3, 1fr);
   grid-gap: 20px;

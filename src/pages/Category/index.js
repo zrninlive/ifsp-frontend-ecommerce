@@ -18,8 +18,10 @@ export default function Category() {
 
   useEffect(() => {
     async function loadProducts() {
-      const categorySelected = storeProducts.categories.find(
-        category => category.id === category_id
+      const { categories, products } = storeProducts;
+
+      const categorySelected = categories.find(
+        category => category.id === +category_id
       );
 
       setCategory(categorySelected);
@@ -30,6 +32,10 @@ export default function Category() {
         ...product,
         priceFormatted: formatPrice(product.price),
       }));
+
+      // const data = products.filter(
+      //   product => product.category_id === +category_id
+      // );
 
       setProducts(data);
     }

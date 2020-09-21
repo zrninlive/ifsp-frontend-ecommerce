@@ -13,18 +13,7 @@ import { toast } from 'react-toastify';
 export default function Register() {
   const history = useHistory();
 
-  const [customer, setCustomer] = useState({
-    name: 'Teste 01',
-    cpf: '43019165806',
-    email: 'teste01@gmail.com',
-    password: 'jahlive',
-    phone: '1599603040',
-    zipcode: '18201350',
-    street: 'Av. Wenceslau Braz',
-    number: '790',
-    city: 'Itapetininga',
-    state: 'São Paulo',
-  });
+  const [customer, setCustomer] = useState({});
 
   const { storeAuth, setUser } = useAuth();
 
