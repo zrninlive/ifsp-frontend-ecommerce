@@ -144,6 +144,7 @@ export default function Account() {
             size={30}
             value={customer.email}
             onChange={handleOnChangeCustomer}
+            readOnly
           />
           <Input
             name="phone"

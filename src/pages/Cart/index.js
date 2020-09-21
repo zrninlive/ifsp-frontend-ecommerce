@@ -8,6 +8,8 @@ import {
   MdDelete,
 } from 'react-icons/md';
 
+import api from '../../services/api';
+
 import { formatPrice } from '../../util/format';
 
 import { Container, ProductTable, Total, CartIsEmpty } from './styles';
@@ -24,7 +26,7 @@ export default function Cart() {
 
   const { cart: productsOnCart } = storeProducts;
 
-  const handleCheckout = useCallback(() => {
+  const handleCheckout = useCallback(async () => {
     const { user } = storeAuth;
 
     if (!Object.keys(user).length) {
@@ -41,10 +43,29 @@ export default function Cart() {
       quantity: product.quantity,
     }));
 
+    const productsArray = [];
+
+    productsOrder.forEach((value, key) => {
+      productsArray[`product[${key}][id]`] = value.id;
+      productsArray[`product[${key}][quantity]`] = value.quantity;
+    });
+
+    console.log(productsArray);
+
     const payload = {
-      customer: user,
-      products: productsOrder,
+      customer_cpf: user.cpf,
+      total_products: productsOrder.length,
+      ...productsArray,
     };
+
+    await api.get('/orders/insert', {
+      params: {
+        ...payload,
+      },
+      headers: {
+        'content-type': 'application/x-www-form-urlencoded; charset=utf-8',
+      },
+    });
   }, [storeAuth]);
 
   const cart = productsOnCart.map(product => ({

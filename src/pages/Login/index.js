@@ -20,8 +20,6 @@ export default function Account() {
 
   useEffect(() => {
     if (Object.keys(storeAuth.user).length) {
-      console.log(storeAuth);
-      alert('HEYY');
       if (storeAuth.redirectTo) {
         setRedirect(null);
         return history.push(storeAuth.redirectTo);

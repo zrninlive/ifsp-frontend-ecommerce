@@ -14,9 +14,10 @@ export default function Register() {
   const history = useHistory();
 
   const [customer, setCustomer] = useState({
-    name: 'Christian Santos de Oliveira',
+    name: 'Teste 01',
     cpf: '43019165806',
-    email: 'christian.soliveira@outlook.com',
+    email: 'teste01@gmail.com',
+    password: 'jahlive',
     phone: '1599603040',
     zipcode: '18201350',
     street: 'Av. Wenceslau Braz',
@@ -48,8 +49,10 @@ export default function Register() {
       e.preventDefault();
 
       try {
-        await api.post('/customers', {
-          ...customer,
+        await api.get('/customers/insert', {
+          params: {
+            ...customer,
+          },
         });
 
         setUser(customer);
@@ -61,7 +64,7 @@ export default function Register() {
           return;
         }
 
-        toast.success('Cadastro efetuado com sucesso');
+        // toast.success('Cadastro efetuado com sucesso');
       } catch (error) {
         toast.error('Falha ao se cadastrar, tente novamente.');
       }
@@ -82,23 +85,34 @@ export default function Register() {
         />
 
         <Input
-          name="cpf"
-          label="CPF"
-          size={30}
-          value={customer.cpf}
-          onChange={handleOnChangeCustomer}
-        />
-        <Input
           name="email"
           label="E-mail"
-          size={30}
+          size={48}
           value={customer.email}
           onChange={handleOnChangeCustomer}
         />
+
+        <Input
+          name="password"
+          type="password"
+          label="Senha"
+          size={48}
+          value={customer.password}
+          onChange={handleOnChangeCustomer}
+        />
+
+        <Input
+          name="cpf"
+          label="CPF"
+          size={45}
+          value={customer.cpf}
+          onChange={handleOnChangeCustomer}
+        />
+
         <Input
           name="phone"
           label="Telefone"
-          size={30}
+          size={45}
           value={customer.phone}
           onChange={handleOnChangeCustomer}
         />
@@ -108,7 +122,7 @@ export default function Register() {
           label="Cep"
           value={customer.zipcode}
           onChange={handleOnChangeCustomer}
-          size={15}
+          size={20}
         />
 
         <Input
