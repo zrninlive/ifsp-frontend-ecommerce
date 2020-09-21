@@ -39,7 +39,7 @@ export default function Category() {
 
   return (
     <>
-      <Title>{category.title}</Title>
+      <Title>{category.name}</Title>
       <ProductList products={products} />
       <Separator />
     </>

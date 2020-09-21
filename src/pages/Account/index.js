@@ -21,7 +21,7 @@ import { useAuth } from '../../hooks/auth';
 
 import { formatPrice, formatDate } from '../../util/format';
 
-Number.prototype.pad = function(size) {
+Number.prototype.pad = function (size) {
   var s = String(this);
   while (s.length < (size || 2)) {
     s = '0' + s;
@@ -79,11 +79,11 @@ export default function Account() {
         {orders ? (
           <Accordion allowMultipleExpanded={true}>
             {orders.map(order => (
-              <AccordionItem key={order.id}>
+              <AccordionItem key={order.created_at}>
                 <AccordionItemHeading>
                   <AccordionItemButton>
                     <p>
-                      Pedido #{order.id.pad(3)} - {formatDate(order.created_at)}{' '}
+                      Pedido # {formatDate(order.created_at)}{' '}
                     </p>
                     <span>{formatPrice(order.total)}</span>
                   </AccordionItemButton>
@@ -98,7 +98,7 @@ export default function Account() {
                     <tbody>
                       {order.products.map(product => (
                         <tr>
-                          <td>{product.name}</td>
+                          <td>{product.title}</td>
                           <td>{product.quantity}</td>
                           <td>{formatPrice(product.total)}</td>
                         </tr>
@@ -110,10 +110,10 @@ export default function Account() {
             ))}
           </Accordion>
         ) : (
-          <OrderIsEmpty>
-            <h1>Você ainda não possui nenhum pedido</h1>
-          </OrderIsEmpty>
-        )}
+            <OrderIsEmpty>
+              <h1>Você ainda não possui nenhum pedido</h1>
+            </OrderIsEmpty>
+          )}
       </Orders>
 
       <Title>Meus dados</Title>

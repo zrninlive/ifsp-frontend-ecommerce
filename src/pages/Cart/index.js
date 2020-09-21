@@ -46,8 +46,8 @@ export default function Cart() {
     const productsArray = [];
 
     productsOrder.forEach((value, key) => {
-      productsArray[`product[${key}][id]`] = value.id;
-      productsArray[`product[${key}][quantity]`] = value.quantity;
+      productsArray[`products-${key}-id`] = value.id;
+      productsArray[`products-${key}-quantity`] = value.quantity;
     });
 
     console.log(productsArray);
@@ -162,15 +162,15 @@ export default function Cart() {
             </Button>
           </>
         ) : (
-          <CartIsEmpty>
-            <h1>Carrinho vazio</h1>
-            <p>Você ainda não adicionou nenhum produto em seu carrinho.</p>
+            <CartIsEmpty>
+              <h1>Carrinho vazio</h1>
+              <p>Você ainda não adicionou nenhum produto em seu carrinho.</p>
 
-            <Button onClick={() => history.push('/')}>
-              Voltar para a página inicial
+              <Button onClick={() => history.push('/')}>
+                Voltar para a página inicial
             </Button>
-          </CartIsEmpty>
-        )}
+            </CartIsEmpty>
+          )}
       </Container>
 
       <Separator />
